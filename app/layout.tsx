@@ -12,10 +12,10 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "陈昶文 / Changwen Chen",
     description:
-      "陈昶文，清华大学新闻与传播学院助理教授。研究领域包括新闻传播史论、批判文化研究与媒介技术的文化政治。",
+      "陈昶文，清华大学新闻与传播学院助理教授。研究聚焦新闻传播史论、传播政治经济学、批判文化研究与媒介技术的文化政治。",
     openGraph: {
       title: "陈昶文 / Changwen Chen",
-      description: "Assistant Professor, School of Journalism and Communication, Tsinghua University",
+      description: "Research on journalism and communication history, cultural politics, media technologies, and social development.",
       type: "website",
       url: origin,
       images: [{ url: socialImage, width: 1200, height: 630, alt: "陈昶文 / Changwen Chen" }],
