@@ -11,17 +11,13 @@ const copy = {
     research: "研究",
     work: "成果",
     teaching: "教学",
-    contact: "联系",
     profileLabel: "个人自述",
-    education: "教育经历",
-    honors: "部分荣誉",
     portraitLabel: "个人照片",
     portraitNote: "照片待提供",
     researchLabel: "研究概述",
     areas: "研究领域",
     projects: "部分研究项目",
     workLabel: "代表性成果",
-    teachingLabel: "教学理念",
     experience: "教学经历",
     scholar: "查看谷歌学术",
     email: "发送邮件",
@@ -34,17 +30,13 @@ const copy = {
     research: "Research",
     work: "Publications",
     teaching: "Teaching",
-    contact: "Contact",
     profileLabel: "Personal Statement",
-    education: "Education",
-    honors: "Selected Recognition",
     portraitLabel: "Portrait",
     portraitNote: "Image to be provided",
     researchLabel: "Research Statement",
     areas: "Research Areas",
     projects: "Selected Projects",
     workLabel: "Selected Publications",
-    teachingLabel: "Teaching Philosophy",
     experience: "Teaching Experience",
     scholar: "View Google Scholar",
     email: "Send an email",
@@ -59,7 +51,6 @@ const navItems = [
   { id: "research", zh: "研究", en: "Research" },
   { id: "work", zh: "成果", en: "Publications" },
   { id: "teaching", zh: "教学", en: "Teaching" },
-  { id: "contact", zh: "联系", en: "Contact" },
 ] as const;
 
 const profileStatement = {
@@ -84,70 +75,10 @@ const researchStatement = {
   ],
 } as const;
 
-const teachingStatement = {
-  zh: [
-    "我把教学理解为价值塑造、知识传授与研究能力训练相互贯通的过程。课堂以师生平等、问题导向与沟通启发为基础，引导学生从现实传播问题出发，建立清晰的概念区分与可检验的分析路径。",
-    "教学中重视将新闻传播史论、马克思主义新闻观与数字媒介研究的前沿问题相联系，并通过研究设计、案例讨论与协作练习，训练学生提出问题、组织证据和展开批判性思考。",
-  ],
-  en: [
-    "I approach teaching as an integrated process of intellectual formation, knowledge building, and research training. My classroom emphasizes equality, dialogue, and problem-oriented inquiry, helping students move from concrete communication problems to precise concepts and testable analytical paths.",
-    "I connect the history and theory of journalism, Marxist perspectives on journalism, and contemporary questions in digital media. Research design, case discussion, and collaborative exercises help students formulate questions, organize evidence, and develop critical analysis.",
-  ],
-} as const;
-
 const researchAreas = [
   { zh: "新闻传播史论", en: "History and Theory of Journalism and Communication" },
   { zh: "批判文化研究", en: "Critical Cultural Studies" },
   { zh: "媒介技术的文化政治", en: "Cultural Politics of Media Technologies" },
-] as const;
-
-const education = [
-  {
-    year: "2024",
-    institution: { zh: "新加坡国立大学", en: "National University of Singapore" },
-    degree: { zh: "哲学博士（传播与新媒体）", en: "Ph.D. in Communications and New Media" },
-  },
-  {
-    year: "2019",
-    institution: { zh: "清华大学", en: "Tsinghua University" },
-    degree: { zh: "文学硕士（新闻传播学）", en: "M.A. in Journalism and Communication" },
-  },
-  {
-    year: "2015",
-    institution: { zh: "武汉大学", en: "Wuhan University" },
-    degree: { zh: "文学学士（新闻学，第二学位）", en: "B.A. in Journalism (second degree)" },
-  },
-  {
-    year: "2015",
-    institution: { zh: "武汉理工大学", en: "Wuhan University of Technology" },
-    degree: {
-      zh: "理学学士（资源环境与城乡规划管理）",
-      en: "B.Sc. in Resources, Environment and Urban-Rural Planning Management",
-    },
-  },
-] as const;
-
-const honors = [
-  {
-    year: "2025",
-    zh: "海外博士后引才专项，教育部",
-    en: "Overseas Postdoctoral Recruitment Program, Ministry of Education",
-  },
-  {
-    year: "2024",
-    zh: "Top Graduate，新加坡国立大学人文与社会科学学院",
-    en: "Top Graduate, Faculty of Arts and Social Sciences, National University of Singapore",
-  },
-  {
-    year: "2024",
-    zh: "学术新秀奖，第五届青年新媒体学术研究“启皓奖”",
-    en: "Academic Rising Star Award, Fifth Qihao Awards for Young New Media Scholarship",
-  },
-  {
-    year: "2022",
-    zh: "最佳论文奖，第十九届中国互联网研究年会",
-    en: "Best Paper Award, 19th Chinese Internet Research Conference",
-  },
 ] as const;
 
 const projects = [
@@ -352,30 +283,6 @@ export default function Home() {
           <div className="about-content">
             <div className="profile-content">
               <StatementBlock label={t.profileLabel} paragraphs={profileStatement[locale]} locale={locale} />
-              <div className="profile-meta-grid">
-                <div>
-                  <p className="subsection-label">{t.education}</p>
-                  <ol className="timeline-list">
-                    {education.map((item) => (
-                      <li key={`${item.year}-${item.institution.en}`}>
-                        <span className="timeline-year">{item.year}</span>
-                        <div><strong>{item.institution[locale]}</strong><p>{item.degree[locale]}</p></div>
-                      </li>
-                    ))}
-                  </ol>
-                </div>
-                <div>
-                  <p className="subsection-label">{t.honors}</p>
-                  <ol className="timeline-list compact">
-                    {honors.map((item) => (
-                      <li key={`${item.year}-${item.en}`}>
-                        <span className="timeline-year">{item.year}</span>
-                        <div><p>{item[locale]}</p></div>
-                      </li>
-                    ))}
-                  </ol>
-                </div>
-              </div>
             </div>
             <figure className="portrait-placeholder">
               <div className="portrait-index">{t.imageDraft} / 01</div>
@@ -436,8 +343,7 @@ export default function Home() {
         <section className="editorial-section" id="teaching" aria-labelledby="teaching-title">
           <SectionTitle number="04 / TEACHING" id="teaching-title" primary={t.teaching} secondary={locale === "zh" ? "Teaching" : "教学"} />
           <div className="section-body teaching-content">
-            <StatementBlock label={t.teachingLabel} paragraphs={teachingStatement[locale]} locale={locale} />
-            <div className="experience-wrap">
+            <div className="experience-wrap experience-wrap--solo">
               <p className="subsection-label">{t.experience}</p>
               <ol className="experience-list">
                 {teachingExperience.map((item) => (
@@ -448,10 +354,6 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="contact-section" id="contact" aria-labelledby="contact-title">
-          <div><p className="section-number">05 / CONTACT</p><h2 id="contact-title">{t.contact}<span lang={alternateLocale}>{locale === "zh" ? "Contact" : "联系"}</span></h2></div>
-          <div className="contact-copy"><p>{locale === "zh" ? "清华大学新闻与传播学院" : "School of Journalism and Communication, Tsinghua University"}</p><a href="mailto:changwenccw@gmail.com">changwenccw@gmail.com</a></div>
-        </section>
       </main>
 
       <footer><span>© {new Date().getFullYear()} 陈昶文 / Changwen Chen</span><span>清华大学新闻与传播学院 · School of Journalism and Communication, Tsinghua University</span></footer>
