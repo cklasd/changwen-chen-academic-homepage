@@ -49,9 +49,9 @@ a {
 }
 
 .site-shell {
-  width: min(100%, 1600px);
+  width: min(100%, 1440px);
   margin: 0 auto;
-  padding: 0 clamp(28px, 5.6vw, 90px);
+  padding: 0 clamp(26px, 4.6vw, 68px);
 }
 
 .masthead {
@@ -60,9 +60,9 @@ a {
   top: 0;
   display: grid;
   grid-template-columns: 1fr auto auto;
-  gap: 36px;
+  gap: 28px;
   align-items: center;
-  height: 78px;
+  height: 68px;
   border-bottom: 1px solid var(--rule);
   background: color-mix(in srgb, var(--paper) 92%, transparent);
   backdrop-filter: blur(12px);
@@ -137,11 +137,11 @@ a {
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(350px, 0.75fr);
-  gap: clamp(64px, 10vw, 162px);
+  grid-template-columns: minmax(0, 1.12fr) minmax(340px, 0.88fr);
+  gap: clamp(42px, 6vw, 82px);
   align-items: end;
-  min-height: 430px;
-  padding: clamp(54px, 7vh, 78px) 0 54px;
+  min-height: 340px;
+  padding: clamp(40px, 5vh, 54px) 0 40px;
   border-bottom: 1px solid var(--rule);
 }
 
@@ -153,7 +153,7 @@ a {
   display: flex;
   gap: 13px;
   align-items: center;
-  margin: 0 0 28px;
+  margin: 0 0 18px;
   color: var(--accent);
   font-size: 11px;
   font-weight: 600;
@@ -171,7 +171,7 @@ a {
 h1 {
   margin: 0;
   font-family: var(--serif);
-  font-size: clamp(64px, 7.5vw, 116px);
+  font-size: clamp(58px, 6.8vw, 94px);
   font-weight: 600;
   line-height: 0.92;
   letter-spacing: -0.055em;
@@ -179,10 +179,10 @@ h1 {
 
 h1 span {
   display: block;
-  margin: 22px 0 0 4px;
+  margin: 15px 0 0 3px;
   color: var(--muted);
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(30px, 3.2vw, 50px);
+  font-size: clamp(27px, 2.8vw, 39px);
   font-weight: 400;
   line-height: 1;
   letter-spacing: -0.035em;
@@ -200,9 +200,9 @@ h1 span {
 .role-primary {
   margin: 0;
   font-family: var(--serif);
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
-  line-height: 1.65;
+  line-height: 1.52;
 }
 
 [data-locale="en"] .role-primary {
@@ -211,10 +211,10 @@ h1 span {
 
 .role-secondary {
   max-width: 390px;
-  margin: 11px 0 0;
+  margin: 8px 0 0;
   color: var(--muted);
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.55;
 }
 
@@ -227,7 +227,7 @@ h1 span {
   flex-wrap: wrap;
   gap: 22px;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .action {
@@ -257,9 +257,9 @@ h1 span {
 
 .editorial-section {
   display: grid;
-  grid-template-columns: minmax(190px, 0.38fr) minmax(0, 1.62fr);
-  gap: clamp(42px, 6vw, 92px);
-  padding: clamp(54px, 6vw, 82px) 0;
+  grid-template-columns: minmax(150px, 0.3fr) minmax(0, 1.7fr);
+  gap: clamp(34px, 4vw, 58px);
+  padding: clamp(42px, 4.8vw, 62px) 0;
   border-bottom: 1px solid var(--rule);
 }
 
@@ -268,7 +268,7 @@ h1 span {
 }
 
 .section-number {
-  margin: 0 0 20px;
+  margin: 0 0 14px;
   color: var(--accent);
   font: 500 11px/1 var(--sans);
   letter-spacing: 0.16em;
@@ -277,7 +277,7 @@ h1 span {
 h2 {
   margin: 0;
   font-family: var(--serif);
-  font-size: clamp(30px, 2.6vw, 42px);
+  font-size: clamp(28px, 2.3vw, 36px);
   font-weight: 600;
   line-height: 1.18;
   letter-spacing: -0.025em;
@@ -285,10 +285,10 @@ h2 {
 
 h2 span {
   display: block;
-  margin-top: 9px;
+  margin-top: 6px;
   color: var(--muted);
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 18px;
+  font-size: 16px;
   font-style: italic;
   font-weight: 400;
   letter-spacing: 0;
@@ -299,10 +299,7 @@ h2 span {
 }
 
 .about-content {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(230px, 0.54fr);
-  gap: clamp(32px, 4.5vw, 64px);
-  align-items: start;
+  min-width: 0;
 }
 
 .section-body {
@@ -314,20 +311,20 @@ h2 span {
 }
 
 .statement-block {
-  padding: 20px 0 24px;
+  padding: 17px 0 19px;
   border-top: 1px solid var(--ink);
   border-bottom: 1px solid var(--rule);
 }
 
 .statement-block .subsection-label {
-  margin-bottom: 18px;
+  margin-bottom: 15px;
 }
 
 .statement-copy {
-  max-width: 780px;
+  max-width: 960px;
   font-family: var(--serif);
-  font-size: clamp(16px, 1.3vw, 18px);
-  line-height: 1.82;
+  font-size: clamp(15px, 1.15vw, 17px);
+  line-height: 1.76;
 }
 
 [data-locale="en"] .statement-copy {
@@ -340,7 +337,15 @@ h2 span {
 }
 
 .statement-copy p + p {
-  margin-top: 12px;
+  margin-top: 13px;
+}
+
+.statement-copy p:first-child {
+  max-width: 880px;
+  color: var(--ink);
+  font-size: clamp(18px, 1.45vw, 21px);
+  font-weight: 600;
+  line-height: 1.62;
 }
 
 .publication-list,
@@ -358,76 +363,12 @@ h2 span {
   letter-spacing: 0.09em;
 }
 
-.portrait-placeholder {
-  position: relative;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  aspect-ratio: 3 / 4;
-  min-height: 360px;
-  margin: 0;
-  padding: 18px;
-  border: 1px solid var(--rule);
-  background: color-mix(in srgb, var(--paper-deep) 50%, transparent);
-}
-
-.portrait-index,
-.portrait-placeholder figcaption {
-  color: var(--muted);
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.portrait-center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.portrait-cross {
-  position: relative;
-  width: 48px;
-  height: 48px;
-  margin-bottom: 22px;
-}
-
-.portrait-cross::before,
-.portrait-cross::after {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  content: "";
-  background: var(--accent);
-  transform: translate(-50%, -50%);
-}
-
-.portrait-cross::before {
-  width: 48px;
-  height: 1px;
-}
-
-.portrait-cross::after {
-  width: 1px;
-  height: 48px;
-}
-
-.portrait-center strong {
-  font-family: var(--serif);
-  font-size: 21px;
-  font-weight: 600;
-}
-
-.portrait-center small {
-  margin-top: 8px;
-  color: var(--muted);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 13px;
-}
-
 .areas-wrap {
-  margin-top: 46px;
+  margin-top: 38px;
+}
+
+.areas-wrap--solo {
+  margin-top: 0;
 }
 
 .subsection-label {
@@ -454,7 +395,7 @@ h2 span {
   grid-template-columns: 52px minmax(200px, 0.86fr) minmax(260px, 1.14fr);
   gap: 24px;
   align-items: baseline;
-  padding: 17px 0 18px;
+  padding: 14px 0 15px;
   border-bottom: 1px solid var(--rule);
 }
 
@@ -468,7 +409,7 @@ h2 span {
 
 .area-primary {
   font-family: var(--serif);
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   line-height: 1.35;
 }
@@ -481,7 +422,7 @@ h2 span {
 .area-secondary {
   color: var(--muted);
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.45;
 }
 
@@ -512,12 +453,12 @@ h2 span {
   grid-template-columns: 62px minmax(0, 1fr);
   gap: 22px;
   align-items: start;
-  padding: 19px 0 21px;
+  padding: 15px 0 16px;
   border-bottom: 1px solid var(--rule);
 }
 
 .publication-copy p {
-  margin: 0 0 7px;
+  margin: 0 0 5px;
   color: var(--accent);
   font-size: 10px;
   font-weight: 600;
@@ -525,13 +466,13 @@ h2 span {
 }
 
 .publication-list h3 {
-  font-size: 18px;
-  line-height: 1.48;
+  font-size: 17px;
+  line-height: 1.42;
 }
 
 .publication-copy > span {
   display: block;
-  margin-top: 9px;
+  margin-top: 6px;
   color: var(--muted);
   font-family: Georgia, "Times New Roman", var(--serif);
   font-size: 13px;
@@ -547,7 +488,7 @@ h2 span {
   grid-template-columns: 38px minmax(0, 1fr);
   gap: 18px;
   align-items: center;
-  padding: 20px 0 21px;
+  padding: 16px 0 17px;
   border-bottom: 1px solid var(--rule);
   counter-increment: courses;
 }
@@ -567,7 +508,7 @@ h2 span {
 .course-list p {
   margin: 0;
   font-family: var(--serif);
-  font-size: 18px;
+  font-size: 17px;
   line-height: 1.55;
 }
 
@@ -580,7 +521,7 @@ footer {
   grid-template-columns: auto 1fr;
   gap: 34px;
   align-items: center;
-  min-height: 76px;
+  min-height: 62px;
   color: var(--muted);
   font-size: 10px;
   letter-spacing: 0.06em;
@@ -611,7 +552,7 @@ footer span:last-child {
 
   .hero {
     grid-template-columns: 1fr;
-    gap: 58px;
+    gap: 34px;
     align-items: start;
   }
 
@@ -623,11 +564,7 @@ footer span:last-child {
 @media (max-width: 860px) {
   .editorial-section {
     grid-template-columns: 1fr;
-    gap: 34px;
-  }
-
-  .about-content {
-    gap: 44px;
+    gap: 26px;
   }
 
 }
@@ -657,12 +594,12 @@ footer span:last-child {
 
   .hero {
     min-height: 0;
-    padding: 48px 0 44px;
-    gap: 38px;
+    padding: 38px 0 34px;
+    gap: 30px;
   }
 
   h1 {
-    font-size: clamp(58px, 20vw, 82px);
+    font-size: clamp(54px, 18vw, 76px);
   }
 
   h1 span {
@@ -683,15 +620,7 @@ footer span:last-child {
   }
 
   .editorial-section {
-    padding: 48px 0;
-  }
-
-  .about-content {
-    grid-template-columns: 1fr;
-  }
-
-  .portrait-placeholder {
-    width: min(100%, 420px);
+    padding: 38px 0;
   }
 
   .research-list li {
