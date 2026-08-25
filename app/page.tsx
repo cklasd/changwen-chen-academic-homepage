@@ -16,13 +16,11 @@ const copy = {
     portraitNote: "照片待提供",
     researchLabel: "研究概述",
     areas: "研究领域",
-    projects: "部分研究项目",
     workLabel: "代表性成果",
-    experience: "教学经历",
+    courses: "开设课程",
     scholar: "查看谷歌学术",
     email: "发送邮件",
     imageDraft: "图片区域",
-    principalInvestigator: "项目负责人",
   },
   en: {
     home: "Home",
@@ -35,13 +33,11 @@ const copy = {
     portraitNote: "Image to be provided",
     researchLabel: "Research Statement",
     areas: "Research Areas",
-    projects: "Selected Projects",
     workLabel: "Selected Publications",
-    experience: "Teaching Experience",
+    courses: "Courses Taught",
     scholar: "View Google Scholar",
     email: "Send an email",
     imageDraft: "Image space",
-    principalInvestigator: "Principal Investigator",
   },
 } as const;
 
@@ -81,49 +77,12 @@ const researchAreas = [
   { zh: "媒介技术的文化政治", en: "Cultural Politics of Media Technologies" },
 ] as const;
 
-const projects = [
-  {
-    years: "2025–2026",
-    title: {
-      zh: "“十五五”时期县域国际传播中心建设与高水平对外传播路径研究",
-      en: "County-Level International Communication Centers and High-Level External Communication during the 15th Five-Year Plan Period",
-    },
-    source: {
-      zh: "清华大学习近平新时代中国特色社会主义思想研究院青年项目",
-      en: "Youth Project, Institute for Xi Jinping Thought on Socialism with Chinese Characteristics for a New Era, Tsinghua University",
-    },
-  },
-  {
-    years: "2024–2026",
-    title: {
-      zh: "社交媒介中青年内卷文化的扩散机制及其治理策略研究",
-      en: "The Diffusion and Governance of Youth Involution Culture on Social Media",
-    },
-    source: {
-      zh: "中国博士后科学基金第77批面上资助项目",
-      en: "General Program, China Postdoctoral Science Foundation (77th Round)",
-    },
-  },
-  {
-    years: "2021–2023",
-    title: {
-      zh: "劳动的一般教育学：转型中国的劳动文化",
-      en: "General Pedagogy of Labor: Work Culture in Transitional China",
-    },
-    source: {
-      zh: "新加坡国立大学研究生科研支持计划",
-      en: "Graduate Research Support Scheme, National University of Singapore",
-    },
-  },
-] as const;
-
 const publications = [
   {
     year: "2026",
     authors: "Changwen Chen",
     title: "Learning in (Re)Production: Spare-time Learning and the Reproduction of Gendered Labor in Socialist China",
     venue: "Critical Asian Studies, Online First, 1–26",
-    href: "https://doi.org/10.1080/14672715.2026.2642704",
   },
   {
     year: "2026",
@@ -136,21 +95,18 @@ const publications = [
     authors: "陈昶文",
     title: "走向信息社会：现代性焦虑与“中华学习机”的媒介考古",
     venue: "《国际新闻界》47(12)，149–169",
-    href: "https://doi.org/10.13495/j.cnki.cjjc.2025.12.007",
   },
   {
     year: "2025",
     authors: "Yifan Wang & Changwen Chen",
     title: "Parasitic Activism: Grassroots Electronics Repair in and against Big Tech",
     venue: "New Media & Society, Online First, 1–21",
-    href: "https://doi.org/10.1177/14614448251403488",
   },
   {
     year: "2025",
     authors: "陈昶文、曹钺",
     title: "生成式人工智能对都市文职白领的技能重构",
     venue: "《中国青年社会科学》44(3)，56–68",
-    href: "https://doi.org/10.16034/j.cnki.10-1318/c.2025.03.006",
   },
   {
     year: "2024",
@@ -163,21 +119,18 @@ const publications = [
     authors: "Changwen Chen & Renyi Hong",
     title: "Business of Involution: Self-Study Rooms and Work Culture in China",
     venue: "Journal of Cultural Economy, 17(3), 396–412",
-    href: "https://doi.org/10.1080/17530350.2023.2246988",
   },
   {
     year: "2023",
     authors: "Changwen Chen, Ziyi Wang & Joel Gn",
     title: "Serve the Traffic: The Logic of Traffic and Its Politics on WeChat Platform",
     venue: "Social Media + Society, 9(3), 1–11",
-    href: "https://doi.org/10.1177/20563051231193025",
   },
   {
     year: "2023",
     authors: "Changwen Chen",
     title: "Revisiting Dallas Smythe’s ‘Cultural Screening’: Maoist Class Politics and the Technology Revolution in Socialist China",
     venue: "Chinese Journal of Communication, 16(4), 376–394",
-    href: "https://doi.org/10.1080/17544750.2023.2208243",
   },
   {
     year: "2019",
@@ -187,22 +140,9 @@ const publications = [
   },
 ] as const;
 
-const teachingExperience = [
-  {
-    years: "2024–2026",
-    zh: "受邀参与清华大学研究生课程《传播学理论研究》《全球新闻传播思想史》《传播学研究方法》的专题讲授与学术研讨。",
-    en: "Guest teaching and seminars in graduate courses at Tsinghua University, including Communication Theory, Global Histories of Journalism and Communication Thought, and Communication Research Methods.",
-  },
-  {
-    years: "2019–2020",
-    zh: "新加坡国立大学传播与新媒体系《量化研究方法》教学助理，独立承担英文小班授课、研究设计指导、作业批改与评分。",
-    en: "Teaching Assistant for Quantitative Research Methods at the National University of Singapore, leading English-language tutorials, research-design exercises, assessment, and grading.",
-  },
-  {
-    years: "2018",
-    zh: "清华大学《学术之道》《新闻中的文化》《老子与论语》课程教学助理，负责专题讨论及相关教学支持。",
-    en: "Teaching Assistant at Tsinghua University for The Way of Scholarship, Culture in the News, and Laozi and the Analects, facilitating seminars and supporting course instruction.",
-  },
+const courses = [
+  { zh: "《中国新闻传播史》", en: "History of Journalism and Communication in China" },
+  { zh: "《Mass Communication and Contemporary Chinese Society》", en: "Mass Communication and Contemporary Chinese Society" },
 ] as const;
 
 function SectionTitle({ number, primary, secondary, id }: { number: string; primary: string; secondary: string; id: string }) {
@@ -304,18 +244,6 @@ export default function Home() {
                 ))}
               </ol>
             </div>
-            <div className="projects-wrap">
-              <p className="subsection-label">{t.projects}</p>
-              <ol className="project-list">
-                {projects.map((project) => (
-                  <li key={project.title.en}>
-                    <span className="project-years">{project.years}</span>
-                    <div><h3>{project.title[locale]}</h3><p>{project.source[locale]}</p></div>
-                    <span className="project-role">{t.principalInvestigator}</span>
-                  </li>
-                ))}
-              </ol>
-            </div>
           </div>
         </section>
 
@@ -332,11 +260,9 @@ export default function Home() {
                     <h3>{publication.title}</h3>
                     <span>{publication.venue}</span>
                   </div>
-                  {"href" in publication ? <a href={publication.href} target="_blank" rel="noreferrer" aria-label={`${publication.title} DOI`}>↗</a> : <span className="publication-no-link" aria-hidden="true">·</span>}
                 </li>
               ))}
             </ol>
-            <a className="scholar-strip" href="https://scholar.google.com/citations?hl=en&user=TZzbU8oAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" rel="noreferrer"><span>Google Scholar</span><strong>{t.scholar}</strong><span aria-hidden="true">↗</span></a>
           </div>
         </section>
 
@@ -344,10 +270,10 @@ export default function Home() {
           <SectionTitle number="04 / TEACHING" id="teaching-title" primary={t.teaching} secondary={locale === "zh" ? "Teaching" : "教学"} />
           <div className="section-body teaching-content">
             <div className="experience-wrap experience-wrap--solo">
-              <p className="subsection-label">{t.experience}</p>
-              <ol className="experience-list">
-                {teachingExperience.map((item) => (
-                  <li key={item.years}><span>{item.years}</span><p>{item[locale]}</p></li>
+              <p className="subsection-label">{t.courses}</p>
+              <ol className="course-list">
+                {courses.map((course) => (
+                  <li key={course.en}><span aria-hidden="true" /><p>{course[locale]}</p></li>
                 ))}
               </ol>
             </div>

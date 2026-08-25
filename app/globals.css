@@ -343,16 +343,14 @@ h2 span {
   margin-top: 12px;
 }
 
-.project-list,
 .publication-list,
-.experience-list {
+.course-list {
   margin: 0;
   padding: 0;
   border-top: 1px solid var(--ink);
   list-style: none;
 }
 
-.project-years,
 .publication-year {
   padding-top: 3px;
   color: var(--accent);
@@ -491,30 +489,6 @@ h2 span {
   font-family: var(--serif);
 }
 
-.scholar-strip {
-  display: grid;
-  grid-template-columns: 1fr auto auto;
-  gap: 22px;
-  align-items: center;
-  margin-top: 30px;
-  padding: 22px 0;
-  border-bottom: 1px solid var(--ink);
-  color: var(--accent);
-  font-size: 12px;
-  letter-spacing: 0.07em;
-  text-decoration: none;
-  transition: color 160ms ease;
-}
-
-.scholar-strip strong {
-  font-weight: 600;
-}
-
-.scholar-strip:hover {
-  color: var(--accent-hover);
-}
-
-.projects-wrap,
 .experience-wrap {
   margin-top: 48px;
 }
@@ -523,57 +497,19 @@ h2 span {
   margin-top: 0;
 }
 
-.project-list li {
-  display: grid;
-  grid-template-columns: 90px minmax(0, 1fr) auto;
-  gap: 26px;
-  align-items: start;
-  padding: 18px 0 20px;
-  border-bottom: 1px solid var(--rule);
-}
-
-.project-list h3,
 .publication-list h3 {
   margin: 0;
   font-family: var(--serif);
   font-weight: 600;
 }
 
-.project-list h3 {
-  font-size: 17px;
-  line-height: 1.55;
-}
-
-[data-locale="en"] .project-list h3,
 [data-locale="en"] .publication-list h3 {
   font-family: Georgia, "Times New Roman", serif;
 }
 
-.project-list p {
-  margin: 8px 0 0;
-  color: var(--muted);
-  font-family: var(--serif);
-  font-size: 13px;
-  line-height: 1.55;
-}
-
-[data-locale="en"] .project-list p {
-  font-family: Georgia, "Times New Roman", serif;
-}
-
-.project-role {
-  padding: 5px 8px;
-  border: 1px solid var(--rule);
-  color: var(--accent);
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  white-space: nowrap;
-}
-
 .publication-list li {
   display: grid;
-  grid-template-columns: 62px minmax(0, 1fr) 24px;
+  grid-template-columns: 62px minmax(0, 1fr);
   gap: 22px;
   align-items: start;
   padding: 19px 0 21px;
@@ -602,64 +538,41 @@ h2 span {
   line-height: 1.5;
 }
 
-.publication-list a,
-.publication-no-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  color: var(--accent);
-  font-size: 13px;
-  text-decoration: none;
-}
-
-.publication-list a {
-  border: 1px solid var(--rule);
-  transition: color 160ms ease, border-color 160ms ease, transform 160ms ease;
-}
-
-.publication-list a:hover {
-  border-color: var(--accent);
-  color: var(--accent-hover);
-  transform: translateY(-2px);
-}
-
-.publication-no-link {
-  color: var(--rule);
-}
-
 .teaching-content {
   min-width: 0;
 }
 
-.experience-list li {
+.course-list li {
   display: grid;
-  grid-template-columns: 94px minmax(0, 1fr);
-  gap: 24px;
-  padding: 18px 0 19px;
+  grid-template-columns: 38px minmax(0, 1fr);
+  gap: 18px;
+  align-items: center;
+  padding: 20px 0 21px;
   border-bottom: 1px solid var(--rule);
+  counter-increment: courses;
 }
 
-.experience-list span {
-  padding-top: 4px;
+.course-list {
+  counter-reset: courses;
+}
+
+.course-list span::before {
+  content: "0" counter(courses);
   color: var(--accent);
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.1em;
 }
 
-.experience-list p {
+.course-list p {
   margin: 0;
   font-family: var(--serif);
-  font-size: 15px;
-  line-height: 1.72;
+  font-size: 18px;
+  line-height: 1.55;
 }
 
-[data-locale="en"] .experience-list p {
+[data-locale="en"] .course-list p {
   font-family: Georgia, "Times New Roman", serif;
-  line-height: 1.58;
 }
 
 footer {
@@ -803,37 +716,13 @@ footer span:last-child {
     font-size: 14px;
   }
 
-  .scholar-strip {
-    grid-template-columns: 1fr auto;
-  }
-
-  .scholar-strip strong {
-    grid-column: 1 / -1;
-    grid-row: 2;
-  }
-
-  .project-list li {
-    grid-template-columns: 76px minmax(0, 1fr);
-    gap: 14px 18px;
-  }
-
-  .project-role {
-    grid-column: 2;
-    justify-self: start;
-  }
-
   .publication-list li {
-    grid-template-columns: 46px minmax(0, 1fr) 24px;
+    grid-template-columns: 46px minmax(0, 1fr);
     gap: 14px;
   }
 
   .publication-list h3 {
     font-size: 16px;
-  }
-
-  .experience-list li {
-    grid-template-columns: 76px minmax(0, 1fr);
-    gap: 18px;
   }
 
   footer {
@@ -853,8 +742,7 @@ footer span:last-child {
   }
 
   .action,
-  .site-nav a,
-  .scholar-strip {
+  .site-nav a {
     transition: none;
   }
 }
