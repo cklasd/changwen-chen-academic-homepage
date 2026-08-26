@@ -8,11 +8,9 @@ const copy = {
   zh: {
     home: "首页",
     about: "简介",
-    research: "研究",
-    work: "成果",
+    work: "研究成果",
     teaching: "教学",
     profileLabel: "个人研究自述",
-    areas: "研究领域",
     workLabel: "代表性成果",
     courses: "开设课程",
     scholar: "查看谷歌学术",
@@ -21,11 +19,9 @@ const copy = {
   en: {
     home: "Home",
     about: "About",
-    research: "Research",
     work: "Publications",
     teaching: "Teaching",
     profileLabel: "Research Statement",
-    areas: "Research Areas",
     workLabel: "Selected Publications",
     courses: "Courses Taught",
     scholar: "View Google Scholar",
@@ -36,8 +32,7 @@ const copy = {
 const navItems = [
   { id: "home", zh: "首页", en: "Home" },
   { id: "about", zh: "简介", en: "About" },
-  { id: "research", zh: "研究", en: "Research" },
-  { id: "work", zh: "成果", en: "Publications" },
+  { id: "work", zh: "研究成果", en: "Publications" },
   { id: "teaching", zh: "教学", en: "Teaching" },
 ] as const;
 
@@ -234,22 +229,8 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="editorial-section research-section" id="research" aria-labelledby="research-title">
-          <SectionTitle number="02 / RESEARCH" id="research-title" primary={t.research} secondary={locale === "zh" ? "Research" : "研究"} />
-          <div className="section-body">
-            <div className="areas-wrap areas-wrap--solo">
-              <p className="subsection-label">{t.areas}</p>
-              <ol className="research-list">
-                {researchAreas.map((area) => (
-                  <li key={area.en}><span className="area-primary">{area[locale]}</span><span className="area-secondary" lang={alternateLocale}>{locale === "zh" ? area.en : area.zh}</span></li>
-                ))}
-              </ol>
-            </div>
-          </div>
-        </section>
-
         <section className="editorial-section" id="work" aria-labelledby="work-title">
-          <SectionTitle number="03 / SELECTED WORK" id="work-title" primary={t.work} secondary={locale === "zh" ? "Selected Work" : "学术成果"} />
+          <SectionTitle number="02 / PUBLICATIONS" id="work-title" primary={t.work} secondary={locale === "zh" ? "Publications" : "研究成果"} />
           <div className="section-body">
             <p className="subsection-label">{t.workLabel}</p>
             <ol className="publication-list">
@@ -268,7 +249,7 @@ export default function Home() {
         </section>
 
         <section className="editorial-section" id="teaching" aria-labelledby="teaching-title">
-          <SectionTitle number="04 / TEACHING" id="teaching-title" primary={t.teaching} secondary={locale === "zh" ? "Teaching" : "教学"} />
+          <SectionTitle number="03 / TEACHING" id="teaching-title" primary={t.teaching} secondary={locale === "zh" ? "Teaching" : "教学"} />
           <div className="section-body teaching-content">
             <div className="experience-wrap experience-wrap--solo">
               <p className="subsection-label">{t.courses}</p>
