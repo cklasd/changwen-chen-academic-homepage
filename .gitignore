@@ -40,6 +40,8 @@ next-env.d.ts
 /.wrangler/
 /outputs/
 /work/
+/.playwright-cli/
+/output/
 
 # Private source materials; keep outside the published site repository.
 /个人资料/

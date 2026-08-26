@@ -1,289 +1,226 @@
 "use client";
 
 import { useState } from "react";
+import { courses, profileStatement, publications, researchAreas } from "./LegacyHome";
 
 type Locale = "zh" | "en";
 
-const copy = {
+const ui = {
   zh: {
-    home: "首页",
-    about: "简介",
-    research: "研究",
-    work: "成果",
-    teaching: "教学",
-    profileLabel: "个人研究自述",
-    areas: "研究领域",
-    workLabel: "代表性成果",
-    courses: "开设课程",
-    scholar: "查看谷歌学术",
-    email: "发送邮件",
+    statement: "个人研究自述",
+    statementEn: "Research Statement",
+    publications: "代表性成果",
+    publicationsEn: "Selected Publications",
+    teaching: "开设课程",
+    teachingEn: "Courses Taught",
+    scholar: "谷歌学术",
+    email: "电子邮件",
+    previous: "查看上一版",
+    affiliation: "清华大学新闻与传播学院助理教授",
+    affiliationAlt: "Assistant Professor, School of Journalism and Communication, Tsinghua University",
+    thesis: "思考如何从劳动中分离，又如何重新回到劳动者手中？",
+    thesisAlt: "How is thinking separated from labor, and how might it return to those who labor?",
+    fieldLabel: "学科定位",
+    conceptLabel: "问题线索",
+    indexLabel: "论述索引",
+    selected: "选录",
   },
   en: {
-    home: "Home",
-    about: "About",
-    research: "Research",
-    work: "Publications",
-    teaching: "Teaching",
-    profileLabel: "Research Statement",
-    areas: "Research Areas",
-    workLabel: "Selected Publications",
-    courses: "Courses Taught",
-    scholar: "View Google Scholar",
-    email: "Send an email",
+    statement: "Research Statement",
+    statementEn: "个人研究自述",
+    publications: "Selected Publications",
+    publicationsEn: "代表性成果",
+    teaching: "Courses Taught",
+    teachingEn: "开设课程",
+    scholar: "Google Scholar",
+    email: "Email",
+    previous: "Previous version",
+    affiliation: "Assistant Professor, School of Journalism and Communication, Tsinghua University",
+    affiliationAlt: "清华大学新闻与传播学院助理教授",
+    thesis: "How is thinking separated from labor, and how might it return to those who labor?",
+    thesisAlt: "思考如何从劳动中分离，又如何重新回到劳动者手中？",
+    fieldLabel: "Disciplinary location",
+    conceptLabel: "Conceptual coordinates",
+    indexLabel: "Argument index",
+    selected: "Selected",
   },
 } as const;
 
-const navItems = [
-  { id: "home", zh: "首页", en: "Home" },
-  { id: "about", zh: "简介", en: "About" },
-  { id: "research", zh: "研究", en: "Research" },
-  { id: "work", zh: "成果", en: "Publications" },
+const navigation = [
+  { id: "statement", zh: "自述", en: "Statement" },
+  { id: "publications", zh: "成果", en: "Publications" },
   { id: "teaching", zh: "教学", en: "Teaching" },
 ] as const;
 
-const profileStatement = {
-  zh: [
-    "现成的学科标签与研究类别很难准确安放我的工作。标签便于辨认，却也会过早切断问题之间的内在联系。因此，我选择以一段论述来介绍自己的研究，也请读者容忍这种不够便捷的自我定位。",
-    "贯穿我研究的，是一个看似古老、却不断以新形式返回的问题：社会如何把思考与劳作分配给不同的人，又如何使这种分配显得顺理成章？",
-    "脑力劳动与体力劳动的分工，起初表现为劳动过程中构想与执行的分离，继而扩展为知识、能力、权威与发言资格的不均衡配置。它决定谁能够设计劳动、解释经验和参与决策，也决定谁主要承担操作、服从与执行。脑体分工因而不仅存在于不同劳动者之间，也被写入机器、程序、标准和制度流程之中。当构想、知识与规则凝结为技术系统，劳动分工便获得了一种超越个体、持续组织后来劳动过程的物质形式。",
-    "从马克思主义的视角看，技术并非从社会外部降临的中性力量。机器、工具与技术系统凝结着先前的知识和劳动，是过去劳动的物化形态，即所谓“死劳动”（dead labor）。技术使过去的劳动进入现在，并参与组织当下的“活劳动”（living labor）。在特定生产关系中，死劳动以机器、流程和标准的形式返回生产现场，规定活劳动的节奏、动作与可能性。脑体劳动之间的分工，也因此表现为活劳动与物化劳动之间的关系，表现为劳动者与技术之间的关系。",
-    "技术的政治性正产生于这一转换。技术由劳动创造，却可能以一种外在于劳动者的力量重新面对劳动者。在脑体分工高度制度化的条件下，技术系统的设计权、解释权与控制权往往集中于规划、管理和专业技术位置，直接从事生产与操作的劳动者则需要适应技术已经写定的程序。过去劳动由谁占有，以何种形式被写入技术，又如何反过来支配当下劳动，构成我理解“技术政治”的基本问题。技术政治由此关涉的，是劳动者能否理解、使用、修复和改造技术，以及他们能否参与决定技术应当如何组织生产与社会生活。",
-    "“学习”是我进入这一问题的关键切口。技术把知识凝结在物的结构之中，学习则使知识重新回到人的实践。劳动者通过学习进入知识生产，通过理解、使用、改造乃至修复技术，重新取得原本从劳动过程中分离出去的构想能力。学习因此不仅意味着知识的获得，也意味着劳动者与自身能力、劳动过程和技术世界之间关系的改变。它使被技术系统固定下来的分工重新具有可讨论、可介入和可重组的可能。",
-    "与“学习”相连的另一个概念是“业余”。“业余”并非专业活动之外的剩余时间，而是一种重新安排知识参与资格的社会形式。它关心普通人如何越过专业化设置的门槛，进入知识、技术与文化生产；也关心一个社会如何使学习与思考重新成为劳动者生活的组成部分。当普通人能够接近知识、掌握技术并介入创造，专业身份、能力等级与劳动分工之间原本稳固的界线便开始松动。学习打开知识的边界，业余改变参与的资格，技术则构成这些边界与资格展开斗争的物质场域。",
-    "这一问题最终通向我对社会发展的理解。社会发展体现为生产能力和物质条件的变化，也体现为一个社会如何分配学习、思考、创造和控制技术的机会。技术进步可以扩大社会的生产能力，也可能把更多知识从劳动者身上抽离出来，并将其封装在由少数主体控制的技术系统之中。社会发展的公平性，因而需要通过劳动者能否共享知识、能否发展自身能力、能否参与技术与劳动过程的组织来衡量。脑体分工、技术控制与知识分配在这里汇合为同一个问题：社会积累起来的能力，究竟以何种方式重新回到社会成员手中。",
-    "我沿着两个彼此照亮的方向追踪这一问题。一条路径进入当代社会，考察新的媒介与技术条件如何重组劳动过程、知识权威和主体经验，分析劳动者如何在日常实践中适应、协商或改变技术所规定的关系。另一条路径转向历史，尤其将毛时代的社会实践视为尚未耗尽的思想资源。所谓“以毛时代历史实践来思考”（thinking with Maoist practices in history），意味着回到那些曾经试图重新安排劳动、学习、技术与知识关系的实践之中，理解它们针对什么问题、依靠何种机制、遭遇哪些矛盾，又留下了哪些尚可继续思考的可能性。历史在这里参与当下问题的形成，使已经被视为必然的分工重新显露其历史边界。",
-    "将分析尺度从社会内部推向全球知识秩序，知识去殖民化便显现为同一问题的另一种形态。世界范围内的知识与技术生产同样存在构想与执行、理论与经验、命名者与被命名者之间的不对称配置。在许多领域，处于中心位置的国家与知识机构掌握概念、标准和技术体系的生产权，后发社会则更多承担物质生产、提供经验材料并接受既有理论的解释。由此形成一种特殊的知识处境：后发社会的经验需要先被翻译为中心知识体系能够辨认的语言，才获得进入理论讨论的资格。",
-    "这种全球知识分工与社会内部的脑体分工分处不同尺度，却共享相近的结构机制：承担实践的人缺少解释实践的概念权力，生产概念的人则能够把特定历史经验提升为普遍性的理论语言。技术进一步使这种关系获得物质形式，因为技术标准、知识体系与生产工具能够跨越空间，在新的社会环境中重新安排劳动与能力。知识去殖民化的任务，因而在于重组经验、概念与技术之间的生产关系，使地方历史从等待解释的材料转化为能够生产概念的思想资源，使后发社会获得理解自身经验、组织自身知识并参与技术选择的能力。",
-    "在新闻传播学的学科体系内，我的研究可以概括为三个相互贯通的方向：新闻传播史论、批判文化研究与媒介技术的文化政治。新闻传播史论使我能够追踪新闻、知识与社会发展之间关系的历史形成；批判文化研究使我关注劳动分工如何进入日常生活、主体经验与社会常识；媒介技术的文化政治则把技术重新置于劳动、知识与权力的关系之中，考察技术如何凝结既有社会关系，又如何参与组织新的文化与社会秩序。这三个方向共同围绕同一问题展开：知识与技术如何成为社会分工的力量，以及普通人如何重新取得参与知识和技术生产的能力。",
-    "我将自己置于马克思主义与历史唯物主义的思想传统之中。这一立场首先意味着一种关于社会的基本判断：劳动形式、技术体系与知识秩序都形成于具体的生产方式、制度安排与历史斗争，并在矛盾运动中持续变化。批判的工作，在于重新揭示看似自然的社会形式背后的生产过程、关系结构与历史条件。新闻传播学既是我的专业归属，也是我进入现代知识秩序的一扇具体入口。沿着新闻、媒介与技术，我所讨论的问题逐渐进入劳动组织、知识生产、社会发展与历史变迁之间更广阔的关系。",
-    "在研究方法上，我主要采用口述史、深度访谈、参与式观察与田野调查。历史化构成这些方法共同的认识原则。它要求把对象放回使其得以形成的关系网络，考察不同力量如何在特定的历史情势中相遇、结合、冲突并沉淀为制度。文化研究中的激进语境主义（radical contextualism）与历史情势分析（historical conjunctural analysis）对我具有重要影响：社会现象需要在具体关系中获得解释，历史情势则是多重力量暂时结合并形成结构性效果的动态过程。",
-    "我的研究由此始终致力于对既成社会形式进行去自然化（denaturalization）与重新问题化（reproblematization）。当专业化被视为效率的自然结果，当技术控制被解释为知识能力的必然差异，当既有分工被理解为社会运行不可改变的条件，历史化的工作便是重新追问：这些关系在何种条件下形成，它们如何被写入知识、制度与技术，又排除了哪些可能的社会安排。研究的意义，正在于使已经失去问题形态的事物重新成为问题，也使那些被凝固在技术与分工之中的社会能力，再次显露出被共同占有和重新组织的可能。",
-  ],
-  en: [
-    "Existing disciplinary tags and research categories do not readily locate my work. Tags make scholarship legible, but they can sever the internal connections among questions too early. I therefore introduce my research through an argument rather than a list of keywords, and ask the reader to bear with this less convenient form of self-description.",
-    "A question that appears old yet continually returns in new forms runs through my research: how does society assign thinking and labor to different people, and how does it make that division appear self-evident?",
-    "The division between mental and manual labor begins as a separation of conception from execution within the labor process, then expands into an unequal distribution of knowledge, capacity, authority, and the right to speak. It determines who may design work, interpret experience, and participate in decisions, as well as who is expected primarily to operate, obey, and execute. This division is inscribed not only between workers but also into machines, programs, standards, and institutional procedures. Once conception, knowledge, and rules are condensed into technical systems, the division of labor acquires a material form that exceeds individuals and continues to organize subsequent labor processes.",
-    "From a Marxist perspective, technology is not a neutral force arriving from outside society. Machines, tools, and technical systems embody prior knowledge and labor; they are material forms of past labor, or what Marx calls “dead labor.” Technology carries past labor into the present and participates in organizing contemporary “living labor.” Under specific relations of production, dead labor returns to the workplace through machines, procedures, and standards, shaping the rhythms, movements, and possibilities of living labor. The division between mental and manual labor thus also appears as a relation between living and objectified labor, and between workers and technology.",
-    "The politics of technology emerges from this transformation. Created through labor, technology can return as a force external to workers. Where the mental–manual division is highly institutionalized, the authority to design, interpret, and control technical systems is often concentrated in planning, managerial, and expert positions, while those engaged directly in production must adapt to procedures already written into technology. Who appropriates past labor, how it is inscribed into technology, and how it subsequently governs present labor constitute the central questions of my approach to technological politics. I therefore ask whether workers can understand, use, repair, and transform technology, and whether they can participate in deciding how technology organizes production and social life.",
-    "Learning is my principal point of entry into this problem. Technology condenses knowledge in the structure of things; learning returns knowledge to human practice. By entering knowledge production and by understanding, using, transforming, and repairing technology, workers may reclaim capacities of conception previously separated from the labor process. Learning concerns both the acquisition of knowledge and a transformation in the relations among workers, their capacities, the labor process, and the technological world. It renders divisions fixed by technical systems open once again to discussion, intervention, and reorganization.",
-    "A second concept connected to learning is the amateur. Here, the amateur does not mean time left over from professional activity. It names a social form that redistributes the qualification to participate in knowledge. It asks how ordinary people cross the thresholds established by professionalization and enter the production of knowledge, technology, and culture, and how learning and thinking might again become integral to workers’ lives. When ordinary people gain access to knowledge, command technology, and participate in creation, the established boundaries among professional identity, hierarchies of capacity, and the division of labor begin to loosen. Learning opens the boundaries of knowledge; amateur practice alters the terms of participation; technology provides the material terrain on which these boundaries are contested.",
-    "This problem ultimately informs my understanding of social development. Development concerns changes in productive capacity and material conditions, but also how a society distributes opportunities to learn, think, create, and control technology. Technological advance may expand collective productive capacities while extracting knowledge from workers and enclosing it within systems controlled by a small number of actors. The equity of development must therefore be judged by whether workers share knowledge, develop their capacities, and participate in organizing technology and the labor process. The division of mental and manual labor, technological control, and the distribution of knowledge converge on one question: how do socially accumulated capacities return to members of society?",
-    "I pursue this question along two mutually illuminating paths. One enters contemporary society to examine how new media and technological conditions reorganize labor processes, epistemic authority, and subjective experience, and how workers adapt to, negotiate, or alter technologically prescribed relations in everyday practice. The other turns toward history, particularly Mao-era social practices as intellectual resources whose possibilities remain unexhausted. To think with Maoist practices in history means returning to efforts that sought to reorganize the relations among labor, learning, technology, and knowledge, asking what problems they addressed, through which mechanisms they operated, what contradictions they encountered, and what unfinished possibilities they left behind. History here participates in forming present questions and reveals the historical limits of divisions that have come to appear necessary.",
-    "When the scale of analysis shifts from the internal organization of society to the global order of knowledge, decolonizing knowledge appears as another form of the same problem. Knowledge and technology are globally organized through asymmetries between conception and execution, theory and experience, and those who name and those who are named. In many fields, countries and institutions occupying central positions command the production of concepts, standards, and technical systems, while late-developing societies more often undertake material production, supply empirical materials, and receive interpretation through existing theories. Their experience must first be translated into a language recognizable to dominant knowledge systems before it qualifies for theoretical discussion.",
-    "This global division of knowledge and the mental–manual division within society operate at different scales but share a comparable structural mechanism: those who carry out practice lack the conceptual authority to explain it, while those who produce concepts can elevate particular historical experiences into universal theoretical languages. Technology gives this relation material form as technical standards, knowledge systems, and instruments of production travel across space and reorganize labor and capacity in new social settings. Decolonizing knowledge therefore requires reorganizing the productive relations among experience, concepts, and technology, transforming local history from material awaiting explanation into an intellectual resource capable of producing concepts, and enabling late-developing societies to interpret their own experience, organize their own knowledge, and participate in technological choice.",
-    "Within journalism and communication, my research develops across three connected areas: the history and theory of journalism and communication, critical cultural studies, and the cultural politics of media technologies. The first traces the historical formation of relations among journalism, knowledge, and social development. The second examines how divisions of labor enter everyday life, subjective experience, and social common sense. The third relocates technology within relations of labor, knowledge, and power, asking how technical forms condense existing social relations and participate in organizing new cultural and social orders. Together, these areas address how knowledge and technology become forces of social division and how ordinary people might regain the capacity to participate in their production.",
-    "I locate my work within the intellectual traditions of Marxism and historical materialism. This position begins from a basic judgment: forms of labor, technical systems, and orders of knowledge are produced through concrete modes of production, institutional arrangements, and historical struggles, and they continue to change through contradiction. Critical inquiry makes visible the processes of production, relational structures, and historical conditions concealed beneath apparently natural social forms. Journalism and communication is both my disciplinary home and a concrete point of entry into the modern order of knowledge. Through journalism, media, and technology, my research opens onto wider relations among labor organization, knowledge production, social development, and historical change.",
-    "Methodologically, I work primarily with oral history, in-depth interviews, participant observation, and fieldwork. Historicization provides their shared epistemological principle. It returns an object to the network of relations that made it possible and examines how forces meet, combine, conflict, and sediment into institutions within a particular historical conjuncture. Radical contextualism and historical conjunctural analysis are especially important to my work: social phenomena become intelligible through concrete relations, while a conjuncture names the dynamic process through which multiple forces temporarily combine and produce structural effects.",
-    "My research is therefore committed to denaturalization and reproblematization. When professionalization appears as the natural result of efficiency, technological control as the necessary expression of unequal knowledge, and established divisions as immutable conditions of social order, historicization asks anew: under what conditions did these relations emerge, how were they inscribed into knowledge, institutions, and technology, and what other social arrangements did they exclude? Research makes problematic again what has lost the form of a problem, allowing capacities congealed in technology and the division of labor to reappear as possibilities for common appropriation and reorganization.",
-  ],
-} as const;
-
-const researchAreas = [
-  { zh: "新闻传播史论", en: "History and Theory of Journalism and Communication" },
-  { zh: "批判文化研究", en: "Critical Cultural Studies" },
-  { zh: "媒介技术的文化政治", en: "Cultural Politics of Media Technologies" },
+const concepts = [
+  { zh: "劳动", en: "Labour" },
+  { zh: "技术", en: "Technology" },
+  { zh: "学习", en: "Learning" },
+  { zh: "业余", en: "The Amateur" },
+  { zh: "去殖民化", en: "Decolonization" },
 ] as const;
 
-const publications = [
-  {
-    year: "2026",
-    authors: "Changwen Chen",
-    title: "Learning in (Re)Production: Spare-time Learning and the Reproduction of Gendered Labor in Socialist China",
-    venue: "Critical Asian Studies, Online First, 1–26",
-  },
-  {
-    year: "2026",
-    authors: "陈昶文",
-    title: "作为“公共知识”的新闻：马克思主义新闻观视野下新闻生产的群众路线",
-    venue: "《传媒》第3期，81–83",
-  },
-  {
-    year: "2025",
-    authors: "陈昶文",
-    title: "走向信息社会：现代性焦虑与“中华学习机”的媒介考古",
-    venue: "《国际新闻界》47(12)，149–169",
-  },
-  {
-    year: "2025",
-    authors: "Yifan Wang & Changwen Chen",
-    title: "Parasitic Activism: Grassroots Electronics Repair in and against Big Tech",
-    venue: "New Media & Society, Online First, 1–21",
-  },
-  {
-    year: "2025",
-    authors: "陈昶文、曹钺",
-    title: "生成式人工智能对都市文职白领的技能重构",
-    venue: "《中国青年社会科学》44(3)，56–68",
-  },
-  {
-    year: "2024",
-    authors: "陈昶文",
-    title: "群众业余学习：全球南方的发展传播学及其替代性范式",
-    venue: "《清华大学学报（哲学社会科学版）》39(2)，175–184",
-  },
-  {
-    year: "2024",
-    authors: "Changwen Chen & Renyi Hong",
-    title: "Business of Involution: Self-Study Rooms and Work Culture in China",
-    venue: "Journal of Cultural Economy, 17(3), 396–412",
-  },
-  {
-    year: "2023",
-    authors: "Changwen Chen, Ziyi Wang & Joel Gn",
-    title: "Serve the Traffic: The Logic of Traffic and Its Politics on WeChat Platform",
-    venue: "Social Media + Society, 9(3), 1–11",
-  },
-  {
-    year: "2023",
-    authors: "Changwen Chen",
-    title: "Revisiting Dallas Smythe’s ‘Cultural Screening’: Maoist Class Politics and the Technology Revolution in Socialist China",
-    venue: "Chinese Journal of Communication, 16(4), 376–394",
-  },
-  {
-    year: "2019",
-    authors: "陈昶文",
-    title: "“流量逻辑”如何影响内容生产？基于微信公众号的实证考察",
-    venue: "《新闻春秋》第5期，4–20",
-  },
+const statementChapters = [
+  { id: "locating", zh: "定位研究", en: "Locating the work", paragraphs: [0, 1] },
+  { id: "labour-technology", zh: "劳动与技术", en: "Labour & technology", paragraphs: [2, 3, 4] },
+  { id: "learning-amateur", zh: "学习与业余", en: "Learning & the amateur", paragraphs: [5, 6, 7] },
+  { id: "history", zh: "历史路径", en: "History as method", paragraphs: [8] },
+  { id: "decolonization", zh: "知识去殖民化", en: "Decolonizing knowledge", paragraphs: [9, 10] },
+  { id: "position-method", zh: "学科、立场与方法", en: "Discipline, position & method", paragraphs: [11, 12, 13, 14] },
 ] as const;
 
-const courses = [
-  { zh: "《中国新闻传播史》", en: "History of Journalism and Communication in China" },
-  { zh: "《Mass Communication and Contemporary Chinese Society》", en: "Mass Communication and Contemporary Chinese Society" },
-] as const;
-
-function SectionTitle({ number, primary, secondary, id }: { number: string; primary: string; secondary: string; id: string }) {
+function BilingualTitle({ number, primary, secondary, id }: { number: string; primary: string; secondary: string; id: string }) {
   return (
-    <div className="section-heading">
-      <p className="section-number">{number}</p>
-      <h2 id={id}>
-        {primary}
-        <span lang={secondary.match(/[\u4e00-\u9fff]/) ? "zh-CN" : "en"}>{secondary}</span>
-      </h2>
-    </div>
-  );
-}
-
-function StatementBlock({ label, paragraphs, locale }: { label: string; paragraphs: readonly string[]; locale: Locale }) {
-  return (
-    <div className="statement-block">
-      <p className="subsection-label">{label}</p>
-      <div className="statement-copy" lang={locale === "zh" ? "zh-CN" : "en"}>
-        {paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-      </div>
+    <div className="cm-section-title">
+      <span>{number}</span>
+      <h2 id={id}>{primary}</h2>
+      <p>{secondary}</p>
     </div>
   );
 }
 
 export default function Home() {
   const [locale, setLocale] = useState<Locale>("zh");
-  const t = copy[locale];
-  const alternateLocale = locale === "zh" ? "en" : "zh-CN";
+  const t = ui[locale];
+  const alternateLanguage = locale === "zh" ? "en" : "zh-CN";
 
   return (
-    <div className="site-shell" data-locale={locale}>
-      <header className="masthead">
-        <a className="mark" href="#home" aria-label={t.home}>CC / 陈昶文</a>
-        <nav className="site-nav" aria-label={locale === "zh" ? "主要导航" : "Primary navigation"}>
-          <ul>
-            {navItems.map((item) => (
-              <li key={item.id}>
-                <a href={`#${item.id}`}>
-                  {item[locale]}
-                  <span lang={locale === "zh" ? "en" : "zh-CN"}>{locale === "zh" ? item.en : item.zh}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
+    <div className="cm-page" data-locale={locale}>
+      <header className="cm-header">
+        <a className="cm-wordmark" href="#top" aria-label={locale === "zh" ? "返回首页" : "Back to top"}>
+          <span>CHANGWEN</span>
+          <strong>陈昶文</strong>
+        </a>
+        <nav className="cm-nav" aria-label={locale === "zh" ? "主要导航" : "Primary navigation"}>
+          {navigation.map((item) => <a key={item.id} href={`#${item.id}`}>{item[locale]}</a>)}
+          <a href="/previous/">{t.previous}</a>
         </nav>
-        <div className="language-switch" aria-label={locale === "zh" ? "语言选择" : "Language selection"}>
-          <button type="button" aria-pressed={locale === "zh"} onClick={() => setLocale("zh")}>中</button>
+        <div className="cm-language" aria-label={locale === "zh" ? "语言选择" : "Language selection"}>
+          <button type="button" aria-pressed={locale === "zh"} onClick={() => setLocale("zh")}>中文</button>
+          <span>/</span>
           <button type="button" aria-pressed={locale === "en"} onClick={() => setLocale("en")}>EN</button>
         </div>
       </header>
 
-      <main>
-        <section className="hero" id="home" aria-labelledby="page-title">
-          <div className="hero-title">
-            <p className="eyebrow">Academic Profile · 学术主页</p>
-            <h1 id="page-title">
-              {locale === "zh" ? "陈昶文" : "Changwen Chen"}
-              <span lang={alternateLocale}>{locale === "zh" ? "Changwen Chen" : "陈昶文"}</span>
-            </h1>
+      <main id="top">
+        <section className="cm-hero" aria-labelledby="cm-name">
+          <div className="cm-hero-meta">
+            <p>ACADEMIC PROFILE</p>
+            <span>JOURNALISM · MEDIA · TECHNOLOGY</span>
           </div>
-          <div className="hero-copy">
-            <p className="role-primary">
-              {locale === "zh" ? "清华大学新闻与传播学院助理教授" : "Assistant Professor, School of Journalism and Communication, Tsinghua University"}
-            </p>
-            <p className="role-secondary" lang={alternateLocale}>
-              {locale === "zh" ? "Assistant Professor, School of Journalism and Communication, Tsinghua University" : "清华大学新闻与传播学院助理教授"}
-            </p>
-            <div className="actions">
-              <a className="action" href="mailto:changwenccw@gmail.com">{t.email}</a>
-              <a className="action" href="https://scholar.google.com/citations?hl=en&user=TZzbU8oAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" rel="noreferrer">{t.scholar}</a>
+
+          <div className="cm-identity">
+            <h1 id="cm-name">{locale === "zh" ? "陈昶文" : "Changwen Chen"}</h1>
+            <p className="cm-name-alt" lang={alternateLanguage}>{locale === "zh" ? "Changwen Chen" : "陈昶文"}</p>
+          </div>
+
+          <div className="cm-role">
+            <p>{t.affiliation}</p>
+            <span lang={alternateLanguage}>{t.affiliationAlt}</span>
+            <div className="cm-links">
+              <a href="mailto:changwenccw@gmail.com">{t.email}<span aria-hidden="true">↗</span></a>
+              <a href="https://scholar.google.com/citations?hl=en&user=TZzbU8oAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" rel="noreferrer">{t.scholar}<span aria-hidden="true">↗</span></a>
             </div>
+          </div>
+
+          <div className="cm-thesis">
+            <span>THE QUESTION</span>
+            <blockquote>{t.thesis}</blockquote>
+            <p lang={alternateLanguage}>{t.thesisAlt}</p>
           </div>
         </section>
 
-        <section className="editorial-section about-section" id="about" aria-labelledby="about-title">
-          <SectionTitle number="01 / PROFILE" id="about-title" primary={t.about} secondary={locale === "zh" ? "About" : "简介"} />
-          <div className="about-content">
-            <div className="profile-content">
-              <StatementBlock label={t.profileLabel} paragraphs={profileStatement[locale]} locale={locale} />
-            </div>
+        <section className="cm-coordinate-band" aria-label={locale === "zh" ? "研究定位" : "Research coordinates"}>
+          <div className="cm-coordinate-group cm-coordinate-fields">
+            <p>{t.fieldLabel}</p>
+            <ol>
+              {researchAreas.map((area, index) => (
+                <li key={area.en}>
+                  <span>0{index + 1}</span>
+                  <strong>{area[locale]}</strong>
+                  <small lang={alternateLanguage}>{locale === "zh" ? area.en : area.zh}</small>
+                </li>
+              ))}
+            </ol>
           </div>
-        </section>
-
-        <section className="editorial-section research-section" id="research" aria-labelledby="research-title">
-          <SectionTitle number="02 / RESEARCH" id="research-title" primary={t.research} secondary={locale === "zh" ? "Research" : "研究"} />
-          <div className="section-body">
-            <div className="areas-wrap areas-wrap--solo">
-              <p className="subsection-label">{t.areas}</p>
-              <ol className="research-list">
-                {researchAreas.map((area) => (
-                  <li key={area.en}><span className="area-primary">{area[locale]}</span><span className="area-secondary" lang={alternateLocale}>{locale === "zh" ? area.en : area.zh}</span></li>
-                ))}
-              </ol>
-            </div>
-          </div>
-        </section>
-
-        <section className="editorial-section" id="work" aria-labelledby="work-title">
-          <SectionTitle number="03 / SELECTED WORK" id="work-title" primary={t.work} secondary={locale === "zh" ? "Selected Work" : "学术成果"} />
-          <div className="section-body">
-            <p className="subsection-label">{t.workLabel}</p>
-            <ol className="publication-list">
-              {publications.map((publication) => (
-                <li key={publication.title}>
-                  <span className="publication-year">{publication.year}</span>
-                  <div className="publication-copy">
-                    <p>{publication.authors}</p>
-                    <h3>{publication.title}</h3>
-                    <span>{publication.venue}</span>
-                  </div>
+          <div className="cm-coordinate-group cm-coordinate-concepts">
+            <p>{t.conceptLabel}</p>
+            <ol>
+              {concepts.map((concept) => (
+                <li key={concept.en}>
+                  <strong>{concept[locale]}</strong>
+                  <span lang={alternateLanguage}>{locale === "zh" ? concept.en : concept.zh}</span>
                 </li>
               ))}
             </ol>
           </div>
         </section>
 
-        <section className="editorial-section" id="teaching" aria-labelledby="teaching-title">
-          <SectionTitle number="04 / TEACHING" id="teaching-title" primary={t.teaching} secondary={locale === "zh" ? "Teaching" : "教学"} />
-          <div className="section-body teaching-content">
-            <div className="experience-wrap experience-wrap--solo">
-              <p className="subsection-label">{t.courses}</p>
-              <ol className="course-list">
-                {courses.map((course) => (
-                  <li key={course.en}><span aria-hidden="true" /><p>{course[locale]}</p></li>
-                ))}
-              </ol>
-            </div>
-          </div>
+        <section className="cm-statement cm-section" id="statement" aria-labelledby="statement-title">
+          <BilingualTitle number="01" primary={t.statement} secondary={t.statementEn} id="statement-title" />
+          <aside className="cm-statement-index">
+            <p>{t.indexLabel}</p>
+            <ol>
+              {statementChapters.map((chapter, index) => (
+                <li key={chapter.id}>
+                  <a href={`#${chapter.id}`}><span>0{index + 1}</span>{chapter[locale]}</a>
+                </li>
+              ))}
+            </ol>
+          </aside>
+          <article className="cm-statement-copy" lang={locale === "zh" ? "zh-CN" : "en"}>
+            {statementChapters.map((chapter, chapterIndex) => (
+              <section className="cm-chapter" id={chapter.id} key={chapter.id}>
+                <header>
+                  <span>0{chapterIndex + 1}</span>
+                  <h3>{chapter[locale]}</h3>
+                  <p lang={alternateLanguage}>{locale === "zh" ? chapter.en : chapter.zh}</p>
+                </header>
+                <div>
+                  {chapter.paragraphs.map((paragraphIndex) => (
+                    <p key={paragraphIndex}>{profileStatement[locale][paragraphIndex]}</p>
+                  ))}
+                </div>
+              </section>
+            ))}
+          </article>
         </section>
 
+        <section className="cm-section cm-publications" id="publications" aria-labelledby="publications-title">
+          <BilingualTitle number="02" primary={t.publications} secondary={t.publicationsEn} id="publications-title" />
+          <ol className="cm-publication-list">
+            {publications.map((publication, index) => (
+              <li key={publication.title}>
+                <span className="cm-pub-index">{String(index + 1).padStart(2, "0")}</span>
+                <span className="cm-pub-year">{publication.year}</span>
+                <div>
+                  <p>{publication.authors}</p>
+                  <h3>{publication.title}</h3>
+                  <span>{publication.venue}</span>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <section className="cm-section cm-teaching" id="teaching" aria-labelledby="teaching-title">
+          <BilingualTitle number="03" primary={t.teaching} secondary={t.teachingEn} id="teaching-title" />
+          <ol className="cm-course-list">
+            {courses.map((course, index) => (
+              <li key={course.en}>
+                <span>0{index + 1}</span>
+                <p>{course[locale]}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
       </main>
 
-      <footer><span>© {new Date().getFullYear()} 陈昶文 / Changwen Chen</span><span>清华大学新闻与传播学院 · School of Journalism and Communication, Tsinghua University</span></footer>
+      <footer className="cm-footer">
+        <p>© {new Date().getFullYear()} 陈昶文 / Changwen Chen</p>
+        <p>清华大学新闻与传播学院 · School of Journalism and Communication, Tsinghua University</p>
+        <a href="/previous/">{t.previous} ↗</a>
+      </footer>
     </div>
   );
 }
