@@ -38,7 +38,7 @@ const navItems = [
 
 export const profileStatement = {
   zh: [
-    "我一直不太知道该怎样用现成的学科标签介绍自己的工作。每个标签似乎都说中了一部分，合在一起却仍有些对不上号。与其勉强把研究塞进几个格子，我想还是多占用读者一点时间，用一段论述说明这些问题如何彼此相连。还请容忍这种略显笨拙、也不太方便检索的自我介绍。",
+    "我很难从学术体制所提供的琳琅满目的标签中，挑选出一组足以准确标定自己所做工作的名称。因此，请允许我暂且绕开这些简洁的分类，用一种最传统、或许也略显冗长的方式，来介绍我的研究。",
     "贯穿我研究的，是一个看似古老、却不断以新形式返回的问题：社会如何把思考与劳作分配给不同的人，又如何使这种分配显得顺理成章？",
     "脑力劳动与体力劳动的分工，起初表现为劳动过程中构想与执行的分离，继而扩展为知识、能力、权威与发言资格的不均衡配置。它决定谁能够设计劳动、解释经验和参与决策，也决定谁主要承担操作、服从与执行。脑体分工因而不仅存在于不同劳动者之间，也被写入机器、程序、标准和制度流程之中。当构想、知识与规则凝结为技术系统，劳动分工便获得了一种超越个体、持续组织后来劳动过程的物质形式。",
     "从马克思主义的视角看，技术并非从社会外部降临的中性力量。机器、工具与技术系统凝结着先前的知识和劳动，是过去劳动的物化形态，即所谓“死劳动”（dead labor）。技术使过去的劳动进入现在，并参与组织当下的“活劳动”（living labor）。在特定生产关系中，死劳动以机器、流程和标准的形式返回生产现场，规定活劳动的节奏、动作与可能性。脑体劳动之间的分工，也因此表现为活劳动与物化劳动之间的关系，表现为劳动者与技术之间的关系。",
@@ -55,7 +55,7 @@ export const profileStatement = {
     "我的研究由此始终致力于对既成社会形式进行去自然化（denaturalization）与重新问题化（reproblematization）。当专业化被视为效率的自然结果，当技术控制被解释为知识能力的必然差异，当既有分工被理解为社会运行不可改变的条件，历史化的工作便是重新追问：这些关系在何种条件下形成，它们如何被写入知识、制度与技术，又排除了哪些可能的社会安排。研究的意义，正在于使已经失去问题形态的事物重新成为问题，也使那些被凝固在技术与分工之中的社会能力，再次显露出被共同占有和重新组织的可能。",
   ],
   en: [
-    "I have never found it easy to describe my work using the usual disciplinary labels. Each captures something of what I do, but none quite explains how the pieces fit together. So rather than force the work into a tidy set of boxes, I will ask for a little more of your time and explain how these questions hang together. I hope you will indulge this slightly old-fashioned and admittedly less searchable way of introducing myself.",
+    "Faced with the academy’s dazzling array of labels, I have struggled to find a set that adequately describes what I do. So allow me, for the moment, to set those tidy classifications aside and introduce my research in the most traditional, and perhaps slightly long-winded, way: in prose.",
     "My work is organized around a question that may sound old but keeps returning in new forms: how does society assign thinking and labor to different people, and how does it make that division seem natural?",
     "The division between mental and manual labor begins with the separation of conception from execution within the labor process. It then extends into the unequal distribution of knowledge, capacity, authority, and the right to speak. It shapes who gets to design work, interpret experience, and take part in decisions, and who is expected to operate, obey, and carry them out. This division is embedded not only in relations among workers but also in machines, programs, standards, and institutional routines. Once knowledge, plans, and rules are built into technical systems, the division of labor takes on a material form that outlives any individual and continues to organize the labor that follows.",
     "From a Marxist perspective, technology is no neutral force arriving from outside society. Machines, tools, and technical systems embody earlier forms of knowledge and labor. They are materialized past labor, what Marx calls “dead labor.” Technology carries that past labor into the present, where it helps organize “living labor.” Under particular relations of production, dead labor returns to the workplace as machinery, procedures, and standards that set the rhythms, movements, and possibilities of living labor. The division between mental and manual labor thus also takes shape as a relation between living and objectified labor, between workers and technology.",
