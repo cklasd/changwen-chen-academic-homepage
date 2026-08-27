@@ -9,6 +9,7 @@ const copy = {
     home: "首页",
     about: "简介",
     work: "研究成果",
+    publicWriting: "媒体文章",
     teaching: "教学",
     profileLabel: "个人研究自述",
     workLabel: "代表性成果",
@@ -22,6 +23,7 @@ const copy = {
     home: "Home",
     about: "About",
     work: "Publications",
+    publicWriting: "Public Writing",
     teaching: "Teaching",
     profileLabel: "Research Statement",
     workLabel: "Selected Publications",
@@ -37,6 +39,7 @@ const navItems = [
   { id: "home", zh: "首页", en: "Home" },
   { id: "about", zh: "简介", en: "About" },
   { id: "work", zh: "研究成果", en: "Publications" },
+  { id: "writing", zh: "媒体文章", en: "Public Writing" },
   { id: "teaching", zh: "教学", en: "Teaching" },
 ] as const;
 
@@ -145,6 +148,30 @@ export const publications = [
     authors: "陈昶文",
     title: "“流量逻辑”如何影响内容生产？基于微信公众号的实证考察",
     venue: "《新闻春秋》第5期，4–20",
+  },
+] as const;
+
+export const publicWriting = [
+  {
+    year: "2025",
+    authors: "Changwen Chen",
+    title: "AI Isn’t Always Helping Chinese Office Workers Either",
+    details: "November 5, 2025 · Sixth Tone",
+    url: "https://www.sixthtone.com/news/1017809",
+  },
+  {
+    year: "2024",
+    authors: "Yifan Wang & Changwen Chen",
+    title: "The Unauthorized Repair of the World",
+    details: "June 13, 2024 · e-flux Journal, no. 146",
+    url: "https://www.e-flux.com/journal/146/613173/the-unauthorized-repair-of-the-world/",
+  },
+  {
+    year: "2024",
+    authors: "Changwen Chen",
+    title: "Why Chinese Are Studying Solo, Together",
+    details: "April 26, 2024 · Sixth Tone",
+    url: "https://www.sixthtone.com/news/1015064",
   },
 ] as const;
 
@@ -272,8 +299,30 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="editorial-section" id="writing" aria-labelledby="writing-title">
+          <SectionTitle number="03 / PUBLIC WRITING" id="writing-title" primary={t.publicWriting} secondary={locale === "zh" ? "Public Writing" : "媒体文章"} />
+          <div className="section-body">
+            <ol className="publication-list public-writing-list">
+              {publicWriting.map((article) => (
+                <li key={article.title}>
+                  <span className="publication-year">{article.year}</span>
+                  <div className="publication-copy">
+                    <p>{article.authors}</p>
+                    <h3>
+                      <a href={article.url} target="_blank" rel="noreferrer">
+                        {article.title}<span aria-hidden="true">↗</span>
+                      </a>
+                    </h3>
+                    <span>{article.details}</span>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
         <section className="editorial-section" id="teaching" aria-labelledby="teaching-title">
-          <SectionTitle number="03 / TEACHING" id="teaching-title" primary={t.teaching} secondary={locale === "zh" ? "Teaching" : "教学"} />
+          <SectionTitle number="04 / TEACHING" id="teaching-title" primary={t.teaching} secondary={locale === "zh" ? "Teaching" : "教学"} />
           <div className="section-body teaching-content">
             <div className="experience-wrap experience-wrap--solo">
               <p className="subsection-label">{t.courses}</p>

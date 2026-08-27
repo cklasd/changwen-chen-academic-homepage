@@ -536,6 +536,26 @@ h2 span {
   line-height: 1.5;
 }
 
+.public-writing-list h3 a {
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.public-writing-list h3 a:hover,
+.public-writing-list h3 a:focus-visible {
+  color: var(--accent);
+}
+
+.public-writing-list h3 a span {
+  display: inline-block;
+  margin-left: 7px;
+  color: var(--accent);
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  transform: translateY(-1px);
+}
+
 .teaching-content {
   min-width: 0;
 }
