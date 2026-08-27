@@ -51,7 +51,7 @@ a {
 .site-shell {
   width: min(100%, 1380px);
   margin: 0 auto;
-  padding: 0 clamp(24px, 3.8vw, 52px);
+  padding: 0 clamp(22px, 3.2vw, 44px);
 }
 
 .masthead {
@@ -257,8 +257,8 @@ h1 span {
 
 .editorial-section {
   display: grid;
-  grid-template-columns: minmax(132px, 0.25fr) minmax(0, 1.75fr);
-  gap: clamp(26px, 3vw, 42px);
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: clamp(18px, 2vw, 28px);
   padding: clamp(24px, 2.7vw, 34px) 0;
   border-bottom: 1px solid var(--rule);
 }
