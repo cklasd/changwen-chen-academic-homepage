@@ -15,8 +15,8 @@ const copy = {
     courses: "开设课程",
     scholar: "查看谷歌学术",
     email: "发送邮件",
-    showMore: "展开完整研究自述",
-    showLess: "收起研究自述",
+    showMore: "展开全文",
+    showLess: "收起全文",
   },
   en: {
     home: "Home",
@@ -28,7 +28,7 @@ const copy = {
     courses: "Courses Taught",
     scholar: "View Google Scholar",
     email: "Send an email",
-    showMore: "Show full research statement",
+    showMore: "Show more",
     showLess: "Show less",
   },
 } as const;
