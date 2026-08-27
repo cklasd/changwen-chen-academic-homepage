@@ -12,7 +12,7 @@ const copy = {
     publicWriting: "媒体文章",
     teaching: "教学",
     profileLabel: "个人研究自述",
-    workLabel: "代表性成果",
+    workLabel: "近期成果",
     courses: "开设课程",
     scholar: "查看谷歌学术",
     email: "发送邮件",
@@ -26,7 +26,7 @@ const copy = {
     publicWriting: "Public Writing",
     teaching: "Teaching",
     profileLabel: "Research Statement",
-    workLabel: "Selected Publications",
+    workLabel: "Recent Publications",
     courses: "Courses Taught",
     scholar: "View Google Scholar",
     email: "Send an email",
@@ -94,6 +94,7 @@ export const publications = [
     authors: "Changwen Chen",
     title: "Learning in (Re)Production: Spare-time Learning and the Reproduction of Gendered Labor in Socialist China",
     venue: "Critical Asian Studies, Online First, 1–26",
+    href: "https://doi.org/10.1080/14672715.2026.2642704",
   },
   {
     year: "2026",
@@ -106,18 +107,21 @@ export const publications = [
     authors: "陈昶文",
     title: "走向信息社会：现代性焦虑与“中华学习机”的媒介考古",
     venue: "《国际新闻界》47(12)，149–169",
+    href: "https://doi.org/10.13495/j.cnki.cjjc.2025.12.007",
   },
   {
     year: "2025",
     authors: "Yifan Wang & Changwen Chen",
     title: "Parasitic Activism: Grassroots Electronics Repair in and against Big Tech",
     venue: "New Media & Society, Online First, 1–21",
+    href: "https://doi.org/10.1177/14614448251403488",
   },
   {
     year: "2025",
     authors: "陈昶文、曹钺",
     title: "生成式人工智能对都市文职白领的技能重构",
     venue: "《中国青年社会科学》44(3)，56–68",
+    href: "https://doi.org/10.16034/j.cnki.10-1318/c.2025.03.006",
   },
   {
     year: "2024",
@@ -130,18 +134,21 @@ export const publications = [
     authors: "Changwen Chen & Renyi Hong",
     title: "Business of Involution: Self-Study Rooms and Work Culture in China",
     venue: "Journal of Cultural Economy, 17(3), 396–412",
+    href: "https://doi.org/10.1080/17530350.2023.2246988",
   },
   {
     year: "2023",
     authors: "Changwen Chen, Ziyi Wang & Joel Gn",
     title: "Serve the Traffic: The Logic of Traffic and Its Politics on WeChat Platform",
     venue: "Social Media + Society, 9(3), 1–11",
+    href: "https://doi.org/10.1177/20563051231193025",
   },
   {
     year: "2023",
     authors: "Changwen Chen",
     title: "Revisiting Dallas Smythe’s ‘Cultural Screening’: Maoist Class Politics and the Technology Revolution in Socialist China",
     venue: "Chinese Journal of Communication, 16(4), 376–394",
+    href: "https://doi.org/10.1080/17544750.2023.2208243",
   },
   {
     year: "2019",
@@ -290,7 +297,13 @@ export default function Home() {
                   <span className="publication-year">{publication.year}</span>
                   <div className="publication-copy">
                     <p>{publication.authors}</p>
-                    <h3>{publication.title}</h3>
+                    <h3>
+                      {"href" in publication ? (
+                        <a href={publication.href} target="_blank" rel="noreferrer">
+                          {publication.title}<span aria-hidden="true">↗</span>
+                        </a>
+                      ) : publication.title}
+                    </h3>
                     <span>{publication.venue}</span>
                   </div>
                 </li>

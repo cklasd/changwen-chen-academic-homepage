@@ -536,17 +536,17 @@ h2 span {
   line-height: 1.5;
 }
 
-.public-writing-list h3 a {
+.publication-list h3 a {
   text-decoration: none;
   transition: color 160ms ease;
 }
 
-.public-writing-list h3 a:hover,
-.public-writing-list h3 a:focus-visible {
+.publication-list h3 a:hover,
+.publication-list h3 a:focus-visible {
   color: var(--accent);
 }
 
-.public-writing-list h3 a span {
+.publication-list h3 a span {
   display: inline-block;
   margin-left: 7px;
   color: var(--accent);
