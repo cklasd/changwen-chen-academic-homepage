@@ -357,24 +357,36 @@ h2 span {
   line-height: 1.62;
 }
 
+.statement-copy--collapsed p:last-child {
+  max-height: 5.28em;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, #000 48%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 48%, transparent 100%);
+}
+
 .statement-toggle {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 8px;
-  margin-top: 18px;
-  padding: 0 0 4px;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 960px;
+  margin-top: 16px;
+  padding: 12px 0 11px;
   border: 0;
-  border-bottom: 1px solid var(--accent);
+  border-top: 1px solid var(--accent);
+  border-bottom: 1px solid var(--rule);
   background: transparent;
   color: var(--accent);
-  font: 600 12px/1.4 var(--sans);
-  letter-spacing: 0.04em;
+  font: 650 12px/1.4 var(--sans);
+  letter-spacing: 0.055em;
+  text-align: left;
   cursor: pointer;
 }
 
 .statement-toggle:hover,
 .statement-toggle:focus-visible {
   color: var(--ink);
+  border-top-color: var(--ink);
   border-bottom-color: var(--ink);
 }
 
@@ -384,8 +396,13 @@ h2 span {
 }
 
 .statement-toggle span {
-  font-size: 13px;
-  line-height: 1;
+  display: grid;
+  width: 24px;
+  height: 24px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  place-items: center;
+  font: 400 17px/1 var(--sans);
 }
 
 .publication-list,

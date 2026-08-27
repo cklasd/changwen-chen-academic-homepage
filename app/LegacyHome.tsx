@@ -15,8 +15,8 @@ const copy = {
     courses: "开设课程",
     scholar: "查看谷歌学术",
     email: "发送邮件",
-    showMore: "展开全文",
-    showLess: "收起全文",
+    showMore: "展开完整研究自述",
+    showLess: "收起研究自述",
   },
   en: {
     home: "Home",
@@ -28,7 +28,7 @@ const copy = {
     courses: "Courses Taught",
     scholar: "View Google Scholar",
     email: "Send an email",
-    showMore: "Show more",
+    showMore: "Show full research statement",
     showLess: "Show less",
   },
 } as const;
@@ -167,13 +167,17 @@ function SectionTitle({ number, primary, secondary, id }: { number: string; prim
 
 function StatementBlock({ label, paragraphs, locale }: { label: string; paragraphs: readonly string[]; locale: Locale }) {
   const [expanded, setExpanded] = useState(false);
-  const visibleParagraphs = expanded ? paragraphs : paragraphs.slice(0, 2);
+  const visibleParagraphs = expanded ? paragraphs : paragraphs.slice(0, 4);
   const toggleLabel = expanded ? copy[locale].showLess : copy[locale].showMore;
 
   return (
     <div className="statement-block">
       <p className="subsection-label">{label}</p>
-      <div className="statement-copy" id="profile-statement-copy" lang={locale === "zh" ? "zh-CN" : "en"}>
+      <div
+        className={`statement-copy ${expanded ? "statement-copy--expanded" : "statement-copy--collapsed"}`}
+        id="profile-statement-copy"
+        lang={locale === "zh" ? "zh-CN" : "en"}
+      >
         {visibleParagraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
       </div>
       <button
@@ -184,7 +188,7 @@ function StatementBlock({ label, paragraphs, locale }: { label: string; paragrap
         onClick={() => setExpanded((current) => !current)}
       >
         {toggleLabel}
-        <span aria-hidden="true">{expanded ? "↑" : "↓"}</span>
+        <span aria-hidden="true">{expanded ? "−" : "+"}</span>
       </button>
     </div>
   );
