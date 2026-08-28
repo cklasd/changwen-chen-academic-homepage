@@ -270,8 +270,9 @@ h1 span {
 .section-number {
   margin: 0 0 14px;
   color: var(--accent);
-  font: 500 12px/1 var(--sans);
-  letter-spacing: 0.16em;
+  font: 500 10px/1 var(--sans);
+  letter-spacing: 0.12em;
+  white-space: nowrap;
 }
 
 h2 {
@@ -285,6 +286,12 @@ h2 {
 
 [data-locale="zh"] .section-heading h2 {
   font-size: clamp(30px, 2.25vw, 34px);
+  white-space: nowrap;
+}
+
+[data-locale="en"] .section-heading h2 {
+  font-size: 22px;
+  letter-spacing: -0.015em;
   white-space: nowrap;
 }
 
