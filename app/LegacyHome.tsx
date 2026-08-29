@@ -192,7 +192,7 @@ export const podcastTalks = [
       zh: "2025年10月9日 · 人文清华播客：对话清华学者 · 1小时21分钟",
       en: "October 9, 2025 · Humanities Tsinghua Podcast · 1 hr 21 min",
     },
-    url: "https://podcasts.apple.com/podcast/id1712419886?i=1000730977315",
+    url: "https://www.xiaoyuzhoufm.com/episode/68e778b4525f51df386ddb64",
   },
 ] as const;
 
