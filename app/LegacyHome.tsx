@@ -34,7 +34,6 @@ const copy = {
 } as const;
 
 const navItems = [
-  { id: "home", zh: "首页", en: "Home", href: "#home" },
   { id: "about", zh: "简介", en: "About", href: "#about" },
   { id: "work", zh: "研究成果", en: "Publications", href: scholarUrl, external: true },
   { id: "writing", zh: "公共媒体", en: "Public Work", href: "/media" },
