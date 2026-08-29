@@ -842,7 +842,7 @@ a {
 h1 {
   margin: 0;
   font-family: var(--serif);
-  font-size: clamp(58px, 6.8vw, 94px);
+  font-size: clamp(48px, 5.4vw, 72px);
   font-weight: 600;
   line-height: 0.92;
   letter-spacing: -0.055em;
@@ -853,7 +853,7 @@ h1 span {
   margin: 15px 0 0 3px;
   color: var(--muted);
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(27px, 2.8vw, 39px);
+  font-size: clamp(24px, 2.3vw, 32px);
   font-weight: 400;
   line-height: 1;
   letter-spacing: -0.035em;
@@ -936,6 +936,10 @@ h1 span {
   gap: clamp(14px, 1.5vw, 20px);
   padding: clamp(24px, 2.7vw, 34px) 0;
   border-bottom: 1px solid var(--rule);
+}
+
+.public-media-section {
+  padding-top: clamp(52px, 6.5vw, 82px);
 }
 
 .section-heading {
@@ -1365,12 +1369,12 @@ footer span:last-child {
   }
 
   h1 {
-    font-size: clamp(54px, 18vw, 76px);
+    font-size: clamp(46px, 14vw, 62px);
   }
 
   h1 span {
-    margin-top: 17px;
-    font-size: clamp(27px, 9vw, 38px);
+    margin-top: 14px;
+    font-size: clamp(24px, 7.5vw, 32px);
   }
 
   .hero-copy {
@@ -1387,6 +1391,10 @@ footer span:last-child {
 
   .editorial-section {
     padding: 26px 0;
+  }
+
+  .public-media-section {
+    padding-top: 42px;
   }
 
   .research-list li {

@@ -77,7 +77,7 @@ export default function PublicMediaPage() {
       </header>
 
       <main>
-        <section className="editorial-section" aria-labelledby="media-title">
+        <section className="editorial-section public-media-section" aria-labelledby="media-title">
           <SectionTitle locale={locale} />
           <div className="section-body">
             <div className="public-work-group">
