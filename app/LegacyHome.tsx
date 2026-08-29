@@ -4,7 +4,7 @@ import { useState } from "react";
 
 type Locale = "zh" | "en";
 
-const scholarUrl = "https://scholar.google.com/citations?hl=en&user=TZzbU8oAAAAJ&view_op=list_works&sortby=pubdate";
+export const scholarUrl = "https://scholar.google.com/citations?hl=en&user=TZzbU8oAAAAJ&view_op=list_works&sortby=pubdate";
 
 const copy = {
   zh: {
@@ -38,10 +38,10 @@ const copy = {
 } as const;
 
 const navItems = [
-  { id: "home", zh: "首页", en: "Home" },
-  { id: "about", zh: "简介", en: "About" },
-  { id: "work", zh: "研究成果", en: "Publications", href: scholarUrl },
-  { id: "writing", zh: "公共媒体", en: "Public Work" },
+  { id: "home", zh: "首页", en: "Home", href: "#home" },
+  { id: "about", zh: "简介", en: "About", href: "#about" },
+  { id: "work", zh: "研究成果", en: "Publications", href: scholarUrl, external: true },
+  { id: "writing", zh: "公共媒体", en: "Public Work", href: "/media" },
 ] as const;
 
 export const profileStatement = {
@@ -251,9 +251,9 @@ export default function Home() {
             {navItems.map((item) => (
               <li key={item.id}>
                 <a
-                  href={"href" in item ? item.href : `#${item.id}`}
-                  target={"href" in item ? "_blank" : undefined}
-                  rel={"href" in item ? "noreferrer" : undefined}
+                  href={item.href}
+                  target={"external" in item && item.external ? "_blank" : undefined}
+                  rel={"external" in item && item.external ? "noreferrer" : undefined}
                 >
                   {item[locale]}
                   <span lang={locale === "zh" ? "en" : "zh-CN"}>{locale === "zh" ? item.en : item.zh}</span>
@@ -296,50 +296,6 @@ export default function Home() {
           <div className="about-content">
             <div className="profile-content">
               <StatementBlock label={t.profileLabel} paragraphs={profileStatement[locale]} locale={locale} />
-            </div>
-          </div>
-        </section>
-
-        <section className="editorial-section" id="writing" aria-labelledby="writing-title">
-          <SectionTitle number="02 / PUBLIC WORK" id="writing-title" primary={t.publicWork} secondary={locale === "zh" ? "Public Work" : "公共媒体"} />
-          <div className="section-body">
-            <div className="public-work-group">
-              <p className="subsection-label">{t.publicWriting}</p>
-              <ol className="publication-list public-writing-list">
-                {publicWriting.map((article) => (
-                  <li key={article.title}>
-                    <span className="publication-year">{article.year}</span>
-                    <div className="publication-copy">
-                      <p>{article.authors}</p>
-                      <h3>
-                        <a href={article.url} target="_blank" rel="noreferrer">
-                          {article.title}<span aria-hidden="true">↗</span>
-                        </a>
-                      </h3>
-                      <span>{article.details}</span>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-            </div>
-            <div className="public-work-group">
-              <p className="subsection-label">{t.podcastTalks}</p>
-              <ol className="publication-list public-writing-list">
-                {podcastTalks.map((episode) => (
-                  <li key={episode.title}>
-                    <span className="publication-year">{episode.year}</span>
-                    <div className="publication-copy">
-                      <p>{episode.authors[locale]}</p>
-                      <h3>
-                        <a href={episode.url} target="_blank" rel="noreferrer">
-                          {episode.title}<span aria-hidden="true">↗</span>
-                        </a>
-                      </h3>
-                      <span>{episode.details[locale]}</span>
-                    </div>
-                  </li>
-                ))}
-              </ol>
             </div>
           </div>
         </section>
