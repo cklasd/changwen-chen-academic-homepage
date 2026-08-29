@@ -12,6 +12,677 @@
   --sans: Inter, "Noto Sans SC", "Source Han Sans SC", "Microsoft YaHei", Arial, sans-serif;
 }
 
+/* Red-and-black poster study: deliberately namespaced so the current homepage is unchanged. */
+@font-face {
+  font-family: "Ma Shan Zheng";
+  src: url("/fonts/MaShanZheng-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
+.poster-site {
+  --poster-paper: #eee4cd;
+  --poster-paper-light: #f6eedc;
+  --poster-ink: #171310;
+  --poster-red: #9c211b;
+  --poster-rule: rgba(23, 19, 16, 0.45);
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  color: var(--poster-ink);
+  background: var(--poster-paper);
+  font-family: "Noto Serif SC", "Songti SC", SimSun, Georgia, serif;
+}
+
+.poster-site::before,
+.poster-site::after {
+  position: fixed;
+  z-index: 0;
+  display: block;
+  content: "";
+  pointer-events: none;
+}
+
+.poster-site::before {
+  inset: 0 0 auto;
+  height: 9px;
+  background: var(--poster-red);
+}
+
+.poster-site::after {
+  right: -44px;
+  top: 23vh;
+  width: 140px;
+  height: 28px;
+  border-top: 3px solid rgba(156, 33, 27, 0.35);
+  border-bottom: 1px solid rgba(156, 33, 27, 0.2);
+  transform: rotate(-7deg);
+}
+
+.poster-site *,
+.poster-site *::before,
+.poster-site *::after {
+  box-sizing: border-box;
+}
+
+.poster-site a {
+  color: inherit;
+}
+
+.poster-edition {
+  position: fixed;
+  z-index: 8;
+  right: 0;
+  top: 45%;
+  padding: 7px 18px 8px;
+  color: var(--poster-paper-light);
+  background: var(--poster-red);
+  font: 700 11px/1.1 Arial, sans-serif;
+  letter-spacing: 0.14em;
+  writing-mode: vertical-rl;
+}
+
+.poster-masthead,
+.poster-site main,
+.poster-footer {
+  position: relative;
+  z-index: 1;
+  width: min(1280px, calc(100% - 64px));
+  margin-inline: auto;
+}
+
+.poster-masthead {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr) auto;
+  align-items: stretch;
+  min-height: 96px;
+  border-bottom: 2px solid var(--poster-ink);
+}
+
+.poster-mark {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.poster-mark strong {
+  display: grid;
+  width: 45px;
+  height: 45px;
+  place-items: center;
+  color: var(--poster-paper-light);
+  background: var(--poster-red);
+  font-family: "Ma Shan Zheng", KaiTi, STKaiti, serif;
+  font-size: 31px;
+  font-weight: 400;
+  line-height: 1;
+  transform: rotate(-2deg);
+}
+
+.poster-mark span {
+  max-width: 116px;
+  font: 800 11px/1.25 Arial, sans-serif;
+  letter-spacing: 0.08em;
+}
+
+.poster-masthead nav {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-left: 1px solid var(--poster-rule);
+}
+
+.poster-masthead nav a {
+  position: relative;
+  display: grid;
+  align-content: center;
+  min-width: 0;
+  padding: 18px 15px;
+  border-right: 1px solid var(--poster-rule);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.poster-masthead nav a::after {
+  position: absolute;
+  right: 12px;
+  bottom: 13px;
+  left: 12px;
+  height: 2px;
+  content: "";
+  background: var(--poster-red);
+  opacity: 0;
+  transform: rotate(-1deg);
+}
+
+.poster-masthead nav a:hover::after,
+.poster-masthead nav a:focus-visible::after {
+  opacity: 1;
+}
+
+.poster-masthead nav b {
+  color: var(--poster-red);
+  font: 800 9px/1 Arial, sans-serif;
+  letter-spacing: 0.08em;
+}
+
+.poster-masthead nav span {
+  margin-left: 6px;
+  color: rgba(23, 19, 16, 0.62);
+  font: 500 11px/1 Arial, sans-serif;
+  letter-spacing: 0.03em;
+}
+
+.poster-locale {
+  display: flex;
+  align-items: center;
+  padding-left: 18px;
+}
+
+.poster-locale button {
+  width: 43px;
+  height: 38px;
+  border: 1px solid var(--poster-ink);
+  color: var(--poster-ink);
+  background: transparent;
+  font: 800 12px/1 Arial, sans-serif;
+  cursor: pointer;
+}
+
+.poster-locale button + button {
+  border-left: 0;
+}
+
+.poster-locale button[aria-pressed="true"] {
+  color: var(--poster-paper-light);
+  background: var(--poster-red);
+}
+
+.poster-hero {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.88fr) minmax(360px, 1.12fr);
+  grid-template-rows: auto auto;
+  gap: 0 54px;
+  padding: 56px 0 42px;
+  border-bottom: 1px solid var(--poster-rule);
+}
+
+.poster-hero-name {
+  grid-row: 1 / 3;
+  align-self: stretch;
+  padding: 5px 42px 18px 0;
+  border-right: 7px solid var(--poster-red);
+}
+
+.poster-hero-name > p {
+  margin: 0 0 20px;
+  font: 800 11px/1 Arial, sans-serif;
+  letter-spacing: 0.18em;
+}
+
+.poster-hero h1 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0;
+}
+
+.poster-brush-name {
+  position: relative;
+  z-index: 1;
+  color: var(--poster-ink);
+  font-family: "Ma Shan Zheng", KaiTi, STKaiti, serif;
+  font-size: clamp(72px, 10.5vw, 146px);
+  font-weight: 400;
+  line-height: 0.88;
+  letter-spacing: -0.05em;
+  white-space: nowrap;
+}
+
+.poster-site[data-locale="en"] .poster-brush-name {
+  font-family: Impact, "Arial Narrow", Arial, sans-serif;
+  font-size: clamp(54px, 7.5vw, 108px);
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
+  white-space: normal;
+}
+
+.poster-hero h1 small {
+  position: relative;
+  margin-top: 18px;
+  padding: 6px 9px 5px;
+  color: var(--poster-paper-light);
+  background: var(--poster-red);
+  font: 800 12px/1 Arial, sans-serif;
+  letter-spacing: 0.15em;
+  transform: rotate(-1.5deg);
+}
+
+.poster-hero-role {
+  align-self: start;
+  padding-top: 4px;
+}
+
+.poster-role-primary {
+  max-width: 770px;
+  margin: 0;
+  font-size: clamp(21px, 2.3vw, 34px);
+  font-weight: 800;
+  line-height: 1.42;
+}
+
+.poster-role-secondary {
+  max-width: 690px;
+  margin: 10px 0 24px;
+  color: rgba(23, 19, 16, 0.68);
+  font: 600 13px/1.5 Arial, sans-serif;
+}
+
+.poster-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.poster-actions a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 156px;
+  gap: 14px;
+  padding: 10px 12px;
+  border: 1px solid var(--poster-ink);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.poster-actions a:hover,
+.poster-actions a:focus-visible {
+  color: var(--poster-paper-light);
+  background: var(--poster-ink);
+}
+
+.poster-hero blockquote {
+  position: relative;
+  margin: 37px 0 0;
+  padding: 21px 21px 17px 42px;
+  border-top: 3px solid var(--poster-ink);
+  border-bottom: 1px solid var(--poster-ink);
+  background: var(--poster-paper-light);
+  font-size: clamp(19px, 2vw, 28px);
+  font-weight: 700;
+  line-height: 1.48;
+}
+
+.poster-hero blockquote > span {
+  position: absolute;
+  top: 7px;
+  left: 9px;
+  color: var(--poster-red);
+  font-family: Georgia, serif;
+  font-size: 56px;
+  line-height: 1;
+}
+
+.poster-section {
+  display: grid;
+  grid-template-columns: 235px minmax(0, 1fr);
+  gap: 0 42px;
+  padding: 52px 0 60px;
+  border-bottom: 2px solid var(--poster-ink);
+}
+
+.poster-section-heading {
+  position: sticky;
+  top: 18px;
+  align-self: start;
+}
+
+.poster-section-heading > span {
+  display: block;
+  margin-bottom: 13px;
+  color: var(--poster-red);
+  font: 800 11px/1 Arial, sans-serif;
+  letter-spacing: 0.14em;
+}
+
+.poster-section-heading > div {
+  position: relative;
+  padding: 15px 18px 17px;
+  color: var(--poster-paper-light);
+  background: var(--poster-ink);
+}
+
+.poster-section:nth-of-type(even) .poster-section-heading > div {
+  transform: rotate(-1deg);
+}
+
+.poster-section:nth-of-type(odd) .poster-section-heading > div {
+  transform: rotate(0.75deg);
+}
+
+.poster-section-heading h2 {
+  margin: 0;
+  font-family: "Ma Shan Zheng", KaiTi, STKaiti, serif;
+  font-size: 43px;
+  font-weight: 400;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.poster-site[data-locale="en"] .poster-section-heading h2 {
+  font-family: Impact, "Arial Narrow", Arial, sans-serif;
+  font-size: 31px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.poster-section-heading p {
+  margin: 8px 0 0;
+  color: var(--poster-paper);
+  font: 700 10px/1 Arial, sans-serif;
+  letter-spacing: 0.14em;
+}
+
+.poster-section-body {
+  min-width: 0;
+}
+
+.poster-subhead {
+  display: inline-block;
+  margin: 0 0 18px;
+  padding: 7px 11px 6px;
+  color: var(--poster-paper-light);
+  background: var(--poster-red);
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  transform: rotate(-0.5deg);
+}
+
+.poster-statement {
+  column-count: 2;
+  column-gap: 46px;
+  column-rule: 1px solid var(--poster-rule);
+  font-size: 17px;
+  line-height: 1.94;
+  text-align: justify;
+}
+
+.poster-statement p {
+  margin: 0 0 1em;
+  break-inside: avoid;
+}
+
+.poster-statement p:first-child {
+  font-style: italic;
+}
+
+.poster-statement-lead {
+  font-size: 21px;
+  font-weight: 800;
+  line-height: 1.65;
+}
+
+.poster-toggle {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding: 13px 15px;
+  border: 1px solid var(--poster-ink);
+  border-left: 7px solid var(--poster-red);
+  color: var(--poster-ink);
+  background: var(--poster-paper-light);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.poster-toggle:hover,
+.poster-toggle:focus-visible {
+  color: var(--poster-paper-light);
+  background: var(--poster-ink);
+}
+
+.poster-toggle b {
+  color: var(--poster-red);
+  font: 500 29px/0.7 Arial, sans-serif;
+}
+
+.poster-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 3px solid var(--poster-ink);
+}
+
+.poster-list li {
+  display: grid;
+  grid-template-columns: 32px 62px minmax(0, 1fr);
+  gap: 10px 14px;
+  align-items: start;
+  padding: 18px 0 20px;
+  border-bottom: 1px solid var(--poster-rule);
+}
+
+.poster-index,
+.poster-year {
+  padding-top: 3px;
+  font-family: Arial, sans-serif;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.poster-index {
+  color: rgba(23, 19, 16, 0.48);
+  font-size: 10px;
+}
+
+.poster-year {
+  color: var(--poster-red);
+  font-size: 15px;
+}
+
+.poster-list p {
+  margin: 0 0 5px;
+  font: 700 11px/1.4 Arial, sans-serif;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
+}
+
+.poster-list h3 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.48;
+}
+
+.poster-list h3 a {
+  text-decoration-color: rgba(156, 33, 27, 0.52);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.poster-list h3 a:hover,
+.poster-list h3 a:focus-visible {
+  color: var(--poster-red);
+}
+
+.poster-list h3 span {
+  margin-left: 6px;
+  color: var(--poster-red);
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+}
+
+.poster-list small {
+  display: block;
+  margin-top: 6px;
+  color: rgba(23, 19, 16, 0.68);
+  font: 500 12px/1.5 Arial, sans-serif;
+}
+
+.poster-public-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 46px;
+}
+
+.poster-list-compact li {
+  grid-template-columns: 25px 51px minmax(0, 1fr);
+  gap: 9px;
+}
+
+.poster-list-compact h3 {
+  font-size: 15px;
+}
+
+.poster-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 26px 0 34px;
+  font: 700 11px/1.4 Arial, sans-serif;
+  letter-spacing: 0.04em;
+}
+
+.poster-footer a {
+  color: var(--poster-red);
+  text-decoration: none;
+}
+
+.poster-footer a span {
+  margin-left: 7px;
+}
+
+@media (max-width: 980px) {
+  .poster-masthead,
+  .poster-site main,
+  .poster-footer {
+    width: min(100% - 40px, 860px);
+  }
+
+  .poster-masthead {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .poster-masthead nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    border-top: 1px solid var(--poster-rule);
+  }
+
+  .poster-locale {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .poster-hero {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .poster-hero-name {
+    grid-row: auto;
+    padding-right: 22px;
+  }
+
+  .poster-hero blockquote {
+    margin-top: 0;
+  }
+
+  .poster-section {
+    grid-template-columns: 190px minmax(0, 1fr);
+    gap: 30px;
+  }
+
+  .poster-statement {
+    column-count: 1;
+  }
+
+  .poster-public-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .poster-masthead,
+  .poster-site main,
+  .poster-footer {
+    width: calc(100% - 30px);
+  }
+
+  .poster-edition {
+    display: none;
+  }
+
+  .poster-masthead nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    overflow: visible;
+  }
+
+  .poster-masthead nav a {
+    min-width: 0;
+    padding-inline: 11px;
+    white-space: normal;
+  }
+
+  .poster-masthead nav span {
+    display: block;
+    margin: 3px 0 0;
+  }
+
+  .poster-locale {
+    padding-left: 7px;
+  }
+
+  .poster-hero {
+    padding: 40px 0 34px;
+  }
+
+  .poster-brush-name {
+    font-size: clamp(70px, 26vw, 112px);
+  }
+
+  .poster-section {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 38px 0 44px;
+  }
+
+  .poster-section-heading {
+    position: static;
+    max-width: 230px;
+  }
+
+  .poster-list li,
+  .poster-list-compact li {
+    grid-template-columns: 27px 49px minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .poster-footer {
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .poster-site *,
+  .poster-site *::before,
+  .poster-site *::after {
+    scroll-behavior: auto !important;
+  }
+}
+
 * {
   box-sizing: border-box;
 }
