@@ -9,7 +9,7 @@ const copy = {
     home: "首页",
     about: "简介",
     work: "研究成果",
-    publicWork: "公共表达",
+    publicWork: "公共媒体",
     publicWriting: "媒体文章",
     podcastTalks: "播客与对谈",
     profileLabel: "个人研究自述",
@@ -39,7 +39,7 @@ const navItems = [
   { id: "home", zh: "首页", en: "Home" },
   { id: "about", zh: "简介", en: "About" },
   { id: "work", zh: "研究成果", en: "Publications" },
-  { id: "writing", zh: "公共表达", en: "Public Work" },
+  { id: "writing", zh: "公共媒体", en: "Public Work" },
 ] as const;
 
 export const profileStatement = {
@@ -320,7 +320,7 @@ export default function Home() {
         </section>
 
         <section className="editorial-section" id="writing" aria-labelledby="writing-title">
-          <SectionTitle number="03 / PUBLIC WORK" id="writing-title" primary={t.publicWork} secondary={locale === "zh" ? "Public Work" : "公共表达"} />
+          <SectionTitle number="03 / PUBLIC WORK" id="writing-title" primary={t.publicWork} secondary={locale === "zh" ? "Public Work" : "公共媒体"} />
           <div className="section-body">
             <div className="public-work-group">
               <p className="subsection-label">{t.publicWriting}</p>
