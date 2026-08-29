@@ -16,8 +16,6 @@ const copy = {
     podcastTalks: "播客与对谈",
     profileLabel: "个人研究自述",
     workLabel: "近期成果",
-    scholar: "查看谷歌学术",
-    email: "发送邮件",
     showMore: "展开全文",
     showLess: "收起全文",
   },
@@ -30,8 +28,6 @@ const copy = {
     podcastTalks: "Podcast & Talks",
     profileLabel: "Research Statement",
     workLabel: "Recent Publications",
-    scholar: "View Google Scholar",
-    email: "Send an email",
     showMore: "Show more",
     showLess: "Show less",
   },
@@ -285,8 +281,7 @@ export default function Home() {
               {locale === "zh" ? "Assistant Professor, School of Journalism and Communication, Tsinghua University" : "清华大学新闻与传播学院助理教授"}
             </p>
             <div className="actions">
-              <a className="action" href="mailto:changwenccw@gmail.com">{t.email}</a>
-              <a className="action" href={scholarUrl} target="_blank" rel="noreferrer">{t.scholar}</a>
+              <a className="action action--email" href="mailto:changwenccw@gmail.com">changwenccw@gmail.com</a>
             </div>
           </div>
         </section>
