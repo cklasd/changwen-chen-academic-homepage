@@ -12,10 +12,8 @@ const copy = {
     publicWork: "公共表达",
     publicWriting: "媒体文章",
     podcastTalks: "播客与对谈",
-    teaching: "教学",
     profileLabel: "个人研究自述",
     workLabel: "近期成果",
-    courses: "开设课程",
     scholar: "查看谷歌学术",
     email: "发送邮件",
     showMore: "展开全文",
@@ -28,10 +26,8 @@ const copy = {
     publicWork: "Public Work",
     publicWriting: "Public Writing",
     podcastTalks: "Podcast & Talks",
-    teaching: "Teaching",
     profileLabel: "Research Statement",
     workLabel: "Recent Publications",
-    courses: "Courses Taught",
     scholar: "View Google Scholar",
     email: "Send an email",
     showMore: "Show more",
@@ -44,7 +40,6 @@ const navItems = [
   { id: "about", zh: "简介", en: "About" },
   { id: "work", zh: "研究成果", en: "Publications" },
   { id: "writing", zh: "公共表达", en: "Public Work" },
-  { id: "teaching", zh: "教学", en: "Teaching" },
 ] as const;
 
 export const profileStatement = {
@@ -197,11 +192,6 @@ export const podcastTalks = [
     },
     url: "https://podcasts.apple.com/podcast/id1712419886?i=1000730977315",
   },
-] as const;
-
-export const courses = [
-  { zh: "《中国新闻传播史》", en: "History of Journalism and Communication in China" },
-  { zh: "《Mass Communication and Contemporary Chinese Society》", en: "Mass Communication and Contemporary Chinese Society" },
 ] as const;
 
 function SectionTitle({ number, primary, secondary, id }: { number: string; primary: string; secondary: string; id: string }) {
@@ -367,20 +357,6 @@ export default function Home() {
                       <span>{episode.details[locale]}</span>
                     </div>
                   </li>
-                ))}
-              </ol>
-            </div>
-          </div>
-        </section>
-
-        <section className="editorial-section" id="teaching" aria-labelledby="teaching-title">
-          <SectionTitle number="04 / TEACHING" id="teaching-title" primary={t.teaching} secondary={locale === "zh" ? "Teaching" : "教学"} />
-          <div className="section-body teaching-content">
-            <div className="experience-wrap experience-wrap--solo">
-              <p className="subsection-label">{t.courses}</p>
-              <ol className="course-list">
-                {courses.map((course) => (
-                  <li key={course.en}><span aria-hidden="true" /><p>{course[locale]}</p></li>
                 ))}
               </ol>
             </div>

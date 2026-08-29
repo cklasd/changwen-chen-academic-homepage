@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { courses, profileStatement, publications, researchAreas } from "./LegacyHome";
+import { profileStatement, publications, researchAreas } from "./LegacyHome";
 
 type Locale = "zh" | "en";
 
@@ -11,8 +11,6 @@ const ui = {
     statementEn: "Research Statement",
     publications: "代表性成果",
     publicationsEn: "Selected Publications",
-    teaching: "开设课程",
-    teachingEn: "Courses Taught",
     scholar: "谷歌学术",
     email: "电子邮件",
     previous: "返回简约版",
@@ -30,8 +28,6 @@ const ui = {
     statementEn: "个人研究自述",
     publications: "Selected Publications",
     publicationsEn: "代表性成果",
-    teaching: "Courses Taught",
-    teachingEn: "开设课程",
     scholar: "Google Scholar",
     email: "Email",
     previous: "Return to classic",
@@ -49,7 +45,6 @@ const ui = {
 const navigation = [
   { id: "statement", zh: "自述", en: "Statement" },
   { id: "publications", zh: "成果", en: "Publications" },
-  { id: "teaching", zh: "教学", en: "Teaching" },
 ] as const;
 
 const concepts = [
@@ -203,17 +198,6 @@ export default function Home() {
           </ol>
         </section>
 
-        <section className="cm-section cm-teaching" id="teaching" aria-labelledby="teaching-title">
-          <BilingualTitle number="03" primary={t.teaching} secondary={t.teachingEn} id="teaching-title" />
-          <ol className="cm-course-list">
-            {courses.map((course, index) => (
-              <li key={course.en}>
-                <span>0{index + 1}</span>
-                <p>{course[locale]}</p>
-              </li>
-            ))}
-          </ol>
-        </section>
       </main>
 
       <footer className="cm-footer">
