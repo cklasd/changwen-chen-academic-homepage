@@ -9,7 +9,9 @@ const copy = {
     home: "首页",
     about: "简介",
     work: "研究成果",
+    publicWork: "公共表达",
     publicWriting: "媒体文章",
+    podcastTalks: "播客与对谈",
     teaching: "教学",
     profileLabel: "个人研究自述",
     workLabel: "近期成果",
@@ -23,7 +25,9 @@ const copy = {
     home: "Home",
     about: "About",
     work: "Publications",
+    publicWork: "Public Work",
     publicWriting: "Public Writing",
+    podcastTalks: "Podcast & Talks",
     teaching: "Teaching",
     profileLabel: "Research Statement",
     workLabel: "Recent Publications",
@@ -39,7 +43,7 @@ const navItems = [
   { id: "home", zh: "首页", en: "Home" },
   { id: "about", zh: "简介", en: "About" },
   { id: "work", zh: "研究成果", en: "Publications" },
-  { id: "writing", zh: "媒体文章", en: "Public Writing" },
+  { id: "writing", zh: "公共表达", en: "Public Work" },
   { id: "teaching", zh: "教学", en: "Teaching" },
 ] as const;
 
@@ -182,6 +186,19 @@ export const publicWriting = [
   },
 ] as const;
 
+export const podcastTalks = [
+  {
+    year: "2025",
+    authors: { zh: "陈昶文（受访嘉宾）", en: "Changwen Chen (guest)" },
+    title: "119 根本停不下来！为何我们不得不“内卷式学习”？",
+    details: {
+      zh: "2025年10月9日 · 人文清华播客：对话清华学者 · 1小时21分钟",
+      en: "October 9, 2025 · Humanities Tsinghua Podcast · 1 hr 21 min",
+    },
+    url: "https://podcasts.apple.com/podcast/id1712419886?i=1000730977315",
+  },
+] as const;
+
 export const courses = [
   { zh: "《中国新闻传播史》", en: "History of Journalism and Communication in China" },
   { zh: "《Mass Communication and Contemporary Chinese Society》", en: "Mass Communication and Contemporary Chinese Society" },
@@ -313,24 +330,46 @@ export default function Home() {
         </section>
 
         <section className="editorial-section" id="writing" aria-labelledby="writing-title">
-          <SectionTitle number="03 / PUBLIC WRITING" id="writing-title" primary={t.publicWriting} secondary={locale === "zh" ? "Public Writing" : "媒体文章"} />
+          <SectionTitle number="03 / PUBLIC WORK" id="writing-title" primary={t.publicWork} secondary={locale === "zh" ? "Public Work" : "公共表达"} />
           <div className="section-body">
-            <ol className="publication-list public-writing-list">
-              {publicWriting.map((article) => (
-                <li key={article.title}>
-                  <span className="publication-year">{article.year}</span>
-                  <div className="publication-copy">
-                    <p>{article.authors}</p>
-                    <h3>
-                      <a href={article.url} target="_blank" rel="noreferrer">
-                        {article.title}<span aria-hidden="true">↗</span>
-                      </a>
-                    </h3>
-                    <span>{article.details}</span>
-                  </div>
-                </li>
-              ))}
-            </ol>
+            <div className="public-work-group">
+              <p className="subsection-label">{t.publicWriting}</p>
+              <ol className="publication-list public-writing-list">
+                {publicWriting.map((article) => (
+                  <li key={article.title}>
+                    <span className="publication-year">{article.year}</span>
+                    <div className="publication-copy">
+                      <p>{article.authors}</p>
+                      <h3>
+                        <a href={article.url} target="_blank" rel="noreferrer">
+                          {article.title}<span aria-hidden="true">↗</span>
+                        </a>
+                      </h3>
+                      <span>{article.details}</span>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
+            <div className="public-work-group">
+              <p className="subsection-label">{t.podcastTalks}</p>
+              <ol className="publication-list public-writing-list">
+                {podcastTalks.map((episode) => (
+                  <li key={episode.title}>
+                    <span className="publication-year">{episode.year}</span>
+                    <div className="publication-copy">
+                      <p>{episode.authors[locale]}</p>
+                      <h3>
+                        <a href={episode.url} target="_blank" rel="noreferrer">
+                          {episode.title}<span aria-hidden="true">↗</span>
+                        </a>
+                      </h3>
+                      <span>{episode.details[locale]}</span>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
           </div>
         </section>
 

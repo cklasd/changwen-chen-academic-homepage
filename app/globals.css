@@ -566,6 +566,10 @@ h2 span {
   transform: translateY(-1px);
 }
 
+.public-work-group + .public-work-group {
+  margin-top: 28px;
+}
+
 .teaching-content {
   min-width: 0;
 }
