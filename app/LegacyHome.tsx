@@ -4,6 +4,8 @@ import { useState } from "react";
 
 type Locale = "zh" | "en";
 
+const scholarUrl = "https://scholar.google.com/citations?hl=en&user=TZzbU8oAAAAJ&view_op=list_works&sortby=pubdate";
+
 const copy = {
   zh: {
     home: "首页",
@@ -38,7 +40,7 @@ const copy = {
 const navItems = [
   { id: "home", zh: "首页", en: "Home" },
   { id: "about", zh: "简介", en: "About" },
-  { id: "work", zh: "研究成果", en: "Publications" },
+  { id: "work", zh: "研究成果", en: "Publications", href: scholarUrl },
   { id: "writing", zh: "公共媒体", en: "Public Work" },
 ] as const;
 
@@ -248,7 +250,11 @@ export default function Home() {
           <ul>
             {navItems.map((item) => (
               <li key={item.id}>
-                <a href={`#${item.id}`}>
+                <a
+                  href={"href" in item ? item.href : `#${item.id}`}
+                  target={"href" in item ? "_blank" : undefined}
+                  rel={"href" in item ? "noreferrer" : undefined}
+                >
                   {item[locale]}
                   <span lang={locale === "zh" ? "en" : "zh-CN"}>{locale === "zh" ? item.en : item.zh}</span>
                 </a>
@@ -280,7 +286,7 @@ export default function Home() {
             </p>
             <div className="actions">
               <a className="action" href="mailto:changwenccw@gmail.com">{t.email}</a>
-              <a className="action" href="https://scholar.google.com/citations?hl=en&user=TZzbU8oAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" rel="noreferrer">{t.scholar}</a>
+              <a className="action" href={scholarUrl} target="_blank" rel="noreferrer">{t.scholar}</a>
             </div>
           </div>
         </section>
@@ -294,33 +300,8 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="editorial-section" id="work" aria-labelledby="work-title">
-          <SectionTitle number="02 / PUBLICATIONS" id="work-title" primary={t.work} secondary={locale === "zh" ? "Publications" : "研究成果"} />
-          <div className="section-body">
-            <p className="subsection-label">{t.workLabel}</p>
-            <ol className="publication-list">
-              {publications.map((publication) => (
-                <li key={publication.title}>
-                  <span className="publication-year">{publication.year}</span>
-                  <div className="publication-copy">
-                    <p>{publication.authors}</p>
-                    <h3>
-                      {"href" in publication ? (
-                        <a href={publication.href} target="_blank" rel="noreferrer">
-                          {publication.title}<span aria-hidden="true">↗</span>
-                        </a>
-                      ) : publication.title}
-                    </h3>
-                    <span>{publication.venue}</span>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
-
         <section className="editorial-section" id="writing" aria-labelledby="writing-title">
-          <SectionTitle number="03 / PUBLIC WORK" id="writing-title" primary={t.publicWork} secondary={locale === "zh" ? "Public Work" : "公共媒体"} />
+          <SectionTitle number="02 / PUBLIC WORK" id="writing-title" primary={t.publicWork} secondary={locale === "zh" ? "Public Work" : "公共媒体"} />
           <div className="section-body">
             <div className="public-work-group">
               <p className="subsection-label">{t.publicWriting}</p>
