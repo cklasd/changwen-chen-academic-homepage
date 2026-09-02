@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { podcastTalks, publicWriting, scholarUrl } from "./LegacyHome";
+import { sitePath } from "./site-paths";
 
 type Locale = "zh" | "en";
 
@@ -25,9 +26,9 @@ const copy = {
 } as const;
 
 const navItems = [
-  { id: "about", zh: "简介", en: "About", href: "/#about" },
+  { id: "about", zh: "简介", en: "About", href: sitePath("/#about") },
   { id: "work", zh: "研究成果", en: "Publications", href: scholarUrl, external: true },
-  { id: "media", zh: "公共媒体", en: "Public Work", href: "/media" },
+  { id: "media", zh: "公共媒体", en: "Public Work", href: sitePath("/media/") },
 ] as const;
 
 function SectionTitle({ locale }: { locale: Locale }) {
@@ -51,7 +52,7 @@ export default function PublicMediaPage() {
   return (
     <div className="site-shell" data-locale={locale}>
       <header className="masthead">
-        <a className="mark" href="/" aria-label={t.home}>CC / 陈昶文</a>
+        <a className="mark" href={sitePath("/")} aria-label={t.home}>CC / 陈昶文</a>
         <nav className="site-nav" aria-label={locale === "zh" ? "主要导航" : "Primary navigation"}>
           <ul>
             {navItems.map((item) => (

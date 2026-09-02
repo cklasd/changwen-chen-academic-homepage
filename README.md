@@ -89,8 +89,20 @@ actions tied to the current ChatGPT user. Leave public content anonymous.
 
 - `npm run dev`: start local development
 - `npm run build`: verify the vinext build output
+- `npm run build:github`: generate the GitHub Pages static site in `out/`
+- `npm run test:github`: verify a project-site build with a repository subpath
 - `npm test`: build the starter and verify its rendered loading skeleton
 - `npm run db:generate`: generate Drizzle migrations after schema changes
+
+## GitHub Pages
+
+The repository includes `.github/workflows/deploy-pages.yml`. After the repository is pushed to GitHub:
+
+1. Open **Settings → Pages**.
+2. Set **Build and deployment → Source** to **GitHub Actions**.
+3. Push to `main`, or run the workflow manually from the **Actions** tab.
+
+The workflow detects whether the repository is a user site (`<username>.github.io`) or a project site and configures internal links and static assets accordingly. It does not change the existing Sites deployment or DNS records.
 
 ## Learn More
 

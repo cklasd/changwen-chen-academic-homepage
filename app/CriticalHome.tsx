@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { sitePath } from "./site-paths";
 import { profileStatement, publications, researchAreas } from "./LegacyHome";
 
 type Locale = "zh" | "en";
@@ -88,7 +89,7 @@ export default function Home() {
         </a>
         <nav className="cm-nav" aria-label={locale === "zh" ? "主要导航" : "Primary navigation"}>
           {navigation.map((item) => <a key={item.id} href={`#${item.id}`}>{item[locale]}</a>)}
-          <a href="/previous/">{t.previous}</a>
+          <a href={sitePath("/previous/")}>{t.previous}</a>
         </nav>
         <div className="cm-language" aria-label={locale === "zh" ? "语言选择" : "Language selection"}>
           <button type="button" aria-pressed={locale === "zh"} onClick={() => setLocale("zh")}>中文</button>
@@ -203,7 +204,7 @@ export default function Home() {
       <footer className="cm-footer">
         <p>© {new Date().getFullYear()} 陈昶文 / Changwen Chen</p>
         <p>清华大学新闻与传播学院 · School of Journalism and Communication, Tsinghua University</p>
-        <a href="/previous/">{t.previous} ↗</a>
+        <a href={sitePath("/previous/")}>{t.previous} ↗</a>
       </footer>
     </div>
   );

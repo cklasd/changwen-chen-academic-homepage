@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { sitePath } from "./site-paths";
 import { podcastTalks, profileStatement, publications, publicWriting } from "./LegacyHome";
 
 type Locale = "zh" | "en";
@@ -240,7 +241,7 @@ export default function PosterStudyHome() {
 
       <footer className="poster-footer">
         <span>© {new Date().getFullYear()} 陈昶文 / Changwen Chen</span>
-        <a href="/">{t.current}<span aria-hidden="true">↗</span></a>
+        <a href={sitePath("/")}>{t.current}<span aria-hidden="true">↗</span></a>
       </footer>
     </div>
   );

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { sitePath } from "./site-paths";
 
 type Locale = "zh" | "en";
 
@@ -36,7 +37,7 @@ const copy = {
 const navItems = [
   { id: "about", zh: "简介", en: "About", href: "#about" },
   { id: "work", zh: "研究成果", en: "Publications", href: scholarUrl, external: true },
-  { id: "writing", zh: "公共媒体", en: "Public Work", href: "/media" },
+  { id: "writing", zh: "公共媒体", en: "Public Work", href: sitePath("/media/") },
 ] as const;
 
 export const profileStatement = {
